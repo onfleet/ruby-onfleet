@@ -1,21 +1,26 @@
-require_relative '../onfleet.rb'
+require_relative '../onfleet'
 
+# Organizations represent the top-most entity on Onfleet.
+# Administrators, teams, workers and tasks all belong to an organization.
 class Organizations
+  def get(config, delegatee_id = nil)
+    method = 'get'
 
-    # Organizations represent the top-most entity on Onfleet. 
-    # Administrators, teams, workers and tasks all belong to an organization.
-
-    def get
-        method = "get"
-        path = "organization"
-
-        return Onfleet.request(method.to_sym, path)
+    # change url path if a delegatee is provided
+    if delegatee_id
+      path = "organizations/#{delegatee_id}"
+    else
+      path = 'organization'
     end
 
-    def get_delegatee_organization(delegatee_id)
-        method = "get"
-        path = "organizations/#{delegatee_id}"
+    Onfleet.request(config, method.to_sym, path)
+  end
 
-        return Onfleet.request(method.to_sym, path)
-    end
+  # ACTION: still needs to be tested
+  def insert_task(org_id, body)
+    method = 'put'
+    path = "containers/organizations/#{org_id}"
+
+    Onfleet.request(method.to_sym, path, body.to_json)
+  end
 end

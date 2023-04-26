@@ -1,84 +1,88 @@
-require_relative '../onfleet.rb'
+require_relative '../onfleet'
 
+# Tasks represent units of work, defined by one destination and one recipient,
+# that administrators create and assign to workers for completion.
+# Task assignment, state and dependencies are important concepts that
+# you should understand well prior to using the task endpoints.
 class Tasks
+  def create(body)
+    method = 'post'
+    path = 'tasks'
 
-    # Tasks represent units of work, defined by one destination and one recipient, 
-    # that administrators create and assign to workers for completion.
-    # Task assignment, state and dependencies are important concepts that you should understand well prior to using the task endpoints.
+    Onfleet.request(method.to_sym, path, body.to_json)
+  end
 
-    def create(body)
-        method = "post"
-        path = "tasks"
+  # ACTION: still needs to be tested
+  def batch_create(body)
+    method = 'post'
+    path = 'tasks/batch'
 
-        return Onfleet.request(method.to_sym, path, body.to_json)
-    end
+    Onfleet.request(method.to_sym, path, body.to_json)
+  end
 
-    def list(from_time, to_time=nil, state=nil, last_id=nil)
-        method = "get"
-        path = "tasks/all?from=#{from_time}"
+  # ACTION: still needs to be tested
+  def batch_create_async(body)
+    method = 'post'
+    path = 'tasks/batch-async'
 
-        # includes 3 optional query parameters to_time, state, and last_id
-        if to_time
-            path = "#{path}&to=#{to_time}"
-        end
+    Onfleet.request(method.to_sym, path, body.to_json)
+  end
 
-        if state
-            path = "#{path}&state=#{state}"
-        end
+  def list(query_parameters)
+    method = 'get'
+    path = "tasks/all?#{query_parameters}"
 
-        if last_id
-            path = "#{path}&lastId=#{last_id}"
-        end
+    Onfleet.request(method.to_sym, path)
+  end
 
-        return Onfleet.request(method.to_sym, path)
-    end
+  def get(id)
+    method = 'get'
+    path = "tasks/#{id}"
 
-    def get(id)
-        method = "get"
-        path = "tasks/#{id}"
+    Onfleet.request(method.to_sym, path)
+  end
 
-        return Onfleet.request(method.to_sym, path)
-    end
+  def get_by_short_id(short_id)
+    method = 'get'
+    path = "tasks/shortId/#{short_id}"
 
-    def get_by_short_id(short_id)
-        method = "get"
-        path = "tasks/shortId/#{short_id}"
+    Onfleet.request(method.to_sym, path)
+  end
 
-        return Onfleet.request(method.to_sym, path)
-    end
+  def update(id, body)
+    method = 'put'
+    path = "tasks/#{id}"
 
-    def update(id, body)
-        method = "put"
-        path = "tasks/#{id}"
+    Onfleet.request(method.to_sym, path, body.to_json)
+  end
 
-        return Onfleet.request(method.to_sym, path, body.to_json)
-    end
+  # ACTION: still needs to be tested
+  def complete(id, body)
+    method = 'post'
+    path = "tasks/#{id}/complete"
 
-    def complete(id, body)
-        method = "post"
-        path = "tasks/#{id}/complete"
+    Onfleet.request(method.to_sym, path, body.to_json)
+  end
 
-        return Onfleet.request(method.to_sym, path, body.to_json)
-    end
+  def clone(id, body)
+    method = 'post'
+    path = "tasks/#{id}/clone"
 
-    def clone(id, body)
-        method = "post"
-        path = "tasks/#{id}/clone"
+    Onfleet.request(method.to_sym, path, body.to_json)
+  end
 
-        return Onfleet.request(method.to_sym, path, body.to_json)
-    end
+  def delete(id)
+    method = 'delete'
+    path = "tasks/#{id}"
 
-    def delete(id)
-        method = "delete"
-        path = "tasks/#{id}"
+    Onfleet.request(method.to_sym, path)
+  end
 
-        return Onfleet.request(method.to_sym, path)
-    end
+  # ACTION: still needs to be tested
+  def auto_assign(body)
+    method = 'post'
+    path = 'tasks/autoAssign'
 
-    def auto_assign(id, body)
-        method = "post"
-        path = "tasks/autoAssign"
-
-        return Onfleet.request(method.to_sym, path, body.to_json)
-    end    
+    Onfleet.request(method.to_sym, path, body.to_json)
+  end
 end

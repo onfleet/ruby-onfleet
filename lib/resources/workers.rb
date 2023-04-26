@@ -1,73 +1,76 @@
-require_relative '../onfleet.rb'
+require_relative '../onfleet'
 
+# Workers (also known as drivers in the dashboard) are the members of an organization 
+# who perform actions via the Onfleet mobile applications.
 class Workers
+  def create(body)
+    method = 'post'
+    path = 'workers'
 
-    # Workers (also known as drivers in the dashboard) are the members of an organization 
-    # who perform actions via the Onfleet mobile applications.
+    Onfleet.request(method.to_sym, path, body.to_json)
+  end
 
-    def create(body)
-        method = "post"
-        path = "workers"
-        
-        return Onfleet.request(method.to_sym, path, body.to_json)
+  def get(id = nil, query_parameters = nil)
+    method = 'get'
+
+    # NOTE: parameters included here must be in the format of the URL query parameters for a raw API call
+    if id
+      path = "workers/#{id}?#{query_parameters}"
+    else
+      path = "workers?#{query_parameters}"
     end
 
-    def list(query_parameters)
-        method = "get"
+    Onfleet.request(method.to_sym, path)
+  end
 
-        # NOTE: parameters included here must be in the format of the URL query parameters for a raw API call
-        path = "workers?#{query_parameters}"
+  def update(id, body)
+    method = 'put'
+    path = "workers/#{id}"
 
-        return Onfleet.request(method.to_sym, path)
-    end
+    Onfleet.request(method.to_sym, path, body.to_json)
+  end
 
-    def list_worker_tasks(id)
-        method = "get"
-        path = "workers/#{id}/tasks"
+  def delete(id)
+    method = 'delete'
+    path = "workers/#{id}"
 
-        return Onfleet.request(method.to_sym, path)
-    end
+    Onfleet.request(method.to_sym, path)
+  end
 
-    def get_workers_near_location(longitude, latitude, radius=nil)
-        method = "get"
-        path = "workers/location?longitude=#{longitude}&latitude=#{latitude}&radius=#{radius}"
+  def get_tasks(id)
+    method = 'get'
+    path = "workers/#{id}/tasks"
 
-        return Onfleet.request(method.to_sym, path)
-    end
+    Onfleet.request(method.to_sym, path)
+  end
 
-    def get(id)
-        method = "get"
-        path = "workers/#{id}?analytics=true"
+  # ACTION: still needs to be tested
+  def get_by_location(longitude, latitude, radius = nil)
+    method = 'get'
+    path = "workers/location?longitude=#{longitude}&latitude=#{latitude}&radius=#{radius}"
 
-        return Onfleet.request(method.to_sym, path)
-    end
+    Onfleet.request(method.to_sym, path)
+  end
 
-    def update(id, body)
-        method = "put"
-        path = "workers/#{id}"
+  def get_worker_schedule(id)
+    method = 'get'
+    path = "workers/#{id}/schedule"
 
-        return Onfleet.request(method.to_sym, path, body.to_json)
-    end
+    Onfleet.request(method.to_sym, path)
+  end
 
-    def delete(id)
-        method = "delete"
-        path = "workers/#{id}"
+  def create_worker_schedule(id, body)
+    method = 'post'
+    path = "workers/#{id}/schedule"
 
-        return Onfleet.request(method.to_sym, path)
-    end
+    Onfleet.request(method.to_sym, path, body.to_json)
+  end
 
-    def get_worker_schedule(body)
-        # ACTION: is this supposed to be a post or a get?
-        method = "post"
-        path = "workers/#{id}/schedule"
-        
-        return Onfleet.request(method.to_sym, path, body.to_json)
-    end
+  # ACTION: still needs to be tested
+  def insert_task(worker_id, body)
+    method = 'put'
+    path = "containers/workers/#{worker_id}"
 
-    def set_worker_schedule(body)
-        method = "post"
-        path = "workers/#{id}/schedule"
-        
-        return Onfleet.request(method.to_sym, path, body.to_json)
-    end
+    Onfleet.request(method.to_sym, path, body.to_json)
+  end
 end

@@ -1,34 +1,33 @@
-require_relative '../onfleet.rb'
+require_relative '../onfleet'
+require_relative '../configuration'
 
+# Administrators are users who perform actions via the dashboard.
 class Administrators
+  def create(body)
+    method = 'post'
+    path = 'admins'
 
-    # Administrators are users who perform actions via the dashboard.
+    Onfleet.request(method.to_sym, path, body.to_json)
+  end
 
-    def create(body)
-        method = "post"
-        path = "admins"
-        
-        return Onfleet.request(method.to_sym, path, body.to_json)
-    end
+  def list
+    method = 'get'
+    path = 'admins'
 
-    def list
-        method = "get"
-        path = "admins"
+    Onfleet.request(method.to_sym, path)
+  end
 
-        return Onfleet.request(method.to_sym, path)
-    end
+  def update(id, body)
+    method = 'put'
+    path = "admins/#{id}"
 
-    def update(id, body)
-        method = "put"
-        path = "admins/#{id}"
+    Onfleet.request(method.to_sym, path, body.to_json)
+  end
 
-        return Onfleet.request(method.to_sym, path, body.to_json)
-    end
+  def delete(id)
+    method = 'delete'
+    path = "admins/#{id}"
 
-    def delete(id)
-        method = "delete"
-        path = "admins/#{id}"
-
-        return Onfleet.request(method.to_sym, path)
-    end
+    Onfleet.request(method.to_sym, path)
+  end
 end
