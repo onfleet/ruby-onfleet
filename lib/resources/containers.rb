@@ -5,10 +5,10 @@ require_relative '../onfleet'
 # When a task is started by a worker, it is no longer part of that container's tasks.
 # Organizations, teams and workers all correspond to containers as they can all be assigned tasks.
 class Containers
-  def get(worker_id)
+  def get(config, entity, id)
     method = 'get'
-    path = "containers/workers/#{worker_id}"
+    path = "containers/#{entity}/#{id}"
 
-    Onfleet.request(method.to_sym, path)
+    Onfleet.request(config, method.to_sym, path)
   end
 end

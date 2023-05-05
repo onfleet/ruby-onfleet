@@ -1,0 +1,1951 @@
+{
+    "administrators": {
+        "create": {
+            "request": {
+                "name": "Dan Menza",
+                "email": "dmenza@onfleet.com",
+                "type": "standard"
+            },
+            "response": {
+                "id": "jKF*izA~NoqzMBCnLNe2rSxZ",
+                "timeCreated": 1683128485000,
+                "timeLastModified": 1683128485949,
+                "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "email": "test@onfleet.com",
+                "type": "standard",
+                "name": "test",
+                "isActive": false,
+                "metadata": [
+
+                ],
+                "isReadOnly": false,
+                "isAccountOwner": false,
+                "teams": [
+
+                ]
+            }
+        },
+        "list": {
+            "request": {
+
+            },
+            "response": [{
+                "id": "q88UO~2rc6QIW~7XLpnj*zR0",
+                "timeCreated": 1681755259000,
+                "timeLastModified": 1681755259832,
+                "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "email": "test@onfleet.com",
+                "type": "standard",
+                "name": "test",
+                "isActive": false,
+                "metadata": [
+
+                ],
+                "isReadOnly": false,
+                "isAccountOwner": false,
+                "teams": [
+
+                ]
+            }]
+        },
+        "update": {
+            "request": {
+                "id": "jKF*izA~NoqzMBCnLNe2rSxZ",
+                "name": "test 2"
+            },
+            "response": {
+                "id": "jKF*izA~NoqzMBCnLNe2rSxZ",
+                "timeCreated": 1683128485000,
+                "timeLastModified": 1683137993781,
+                "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "email": "test2@onfleet.com",
+                "type": "standard",
+                "name": "test 2",
+                "isActive": false,
+                "metadata": [
+
+                ],
+                "isReadOnly": false,
+                "isAccountOwner": false,
+                "teams": [
+
+                ]
+            }
+        },
+        "delete": {
+            "request": {
+                "id": "jKF*izA~NoqzMBCnLNe2rSxZ"
+            },
+            "response": {
+                "status": 200
+            }
+        }
+    },
+    "containers": {
+        "get": {
+            "request": {
+                "entity": "organizations",
+                "id": "MfLA8ysMFrx5jnCRsFHEn6DO"
+            },
+            "response": {
+                "id": "eRSIzypMz3Vk5cnG1qdp*zVk",
+                "timeCreated": 1681327635000,
+                "timeLastModified": 1681327635023,
+                "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "type": "ORGANIZATION",
+                "activeTask": null,
+                "tasks": [
+
+                ]
+            }
+        }
+    },
+    "destinations": {
+        "create": {
+            "request": {
+                "address": {
+                    "number": "543",
+                    "street": "Howard St",
+                    "apartment": "5th Floor",
+                    "city": "San Francisco",
+                    "state": "CA",
+                    "country": "USA"
+                },
+                "notes": "Don't forget to check out the epic rooftop.",
+                "metadata": [{
+                    "name": "hasDog",
+                    "type": "boolean",
+                    "value": true
+                }]
+            },
+            "response": {
+                "id": "7kyhFRlRoi1689O8LG35Pysz",
+                "timeCreated": 1683210009000,
+                "timeLastModified": 1683210009142,
+                "location": [-122.3966546,
+                    37.7875914
+                ],
+                "address": {
+                    "apartment": "5th Floor",
+                    "state": "California",
+                    "postalCode": "94105",
+                    "number": "543",
+                    "street": "Howard Street",
+                    "city": "San Francisco",
+                    "country": "United States"
+                },
+                "notes": "Don't forget to check out the epic rooftop.",
+                "metadata": [{
+                    "type": "boolean",
+                    "visibility": [
+                        "api"
+                    ],
+                    "value": true,
+                    "name": "hasDog"
+                }],
+                "googlePlaceId": "ChIJOaZouXyAhYAR6fQzgPFBiWo",
+                "warnings": [
+
+                ],
+                "useGPS": true
+            }
+        },
+        "get": {
+            "request": {
+                "id": "7kyhFRlRoi1689O8LG35Pysz"
+            },
+            "response": {
+                "id": "7kyhFRlRoi1689O8LG35Pysz",
+                "timeCreated": 1683210009000,
+                "timeLastModified": 1683210009142,
+                "location": [-122.3966546,
+                    37.7875914
+                ],
+                "address": {
+                    "apartment": "5th Floor",
+                    "state": "California",
+                    "postalCode": "94105",
+                    "number": "543",
+                    "street": "Howard Street",
+                    "city": "San Francisco",
+                    "country": "United States"
+                },
+                "notes": "Don't forget to check out the epic rooftop.",
+                "metadata": [{
+                    "type": "boolean",
+                    "visibility": [
+                        "api"
+                    ],
+                    "value": true,
+                    "name": "hasDog"
+                }],
+                "googlePlaceId": "ChIJOaZouXyAhYAR6fQzgPFBiWo",
+                "warnings": [
+
+                ],
+                "useGPS": true
+            }
+        },
+        "match_metadata": {
+            "request": [{
+                "name": "hasDog",
+                "type": "boolean",
+                "value": true
+            }],
+            "response": [{
+                "id": "7kyhFRlRoi1689O8LG35Pysz",
+                "timeCreated": 1683210009000,
+                "timeLastModified": 1683210009142,
+                "location": [-122.3966546,
+                    37.7875914
+                ],
+                "address": {
+                    "apartment": "5th Floor",
+                    "state": "California",
+                    "postalCode": "94105",
+                    "number": "543",
+                    "street": "Howard Street",
+                    "city": "San Francisco",
+                    "country": "United States"
+                },
+                "notes": "Don't forget to check out the epic rooftop.",
+                "metadata": [{
+                    "type": "boolean",
+                    "visibility": [
+                        "api"
+                    ],
+                    "value": true,
+                    "name": "hasDog"
+                }],
+                "googlePlaceId": "ChIJOaZouXyAhYAR6fQzgPFBiWo",
+                "warnings": [
+
+                ],
+                "useGPS": true
+            }]
+        }
+    },
+    "hubs": {
+        "create": {
+            "request": {
+                "name": "VIP customer",
+                "address": {
+                    "apartment": "",
+                    "state": "California",
+                    "postalCode": "92806",
+                    "number": "2695",
+                    "street": "East Katella Avenue",
+                    "city": "Anaheim",
+                    "country": "United States",
+                    "name": "VIP customer"
+                },
+                "teams": [
+
+                ]
+            },
+            "response": {
+                "id": "pEqvT8ul5ac5QhY4*mPMzm8h",
+                "name": "VIP customer",
+                "location": [-117.8764809,
+                    33.8078691
+                ],
+                "address": {
+                    "number": "2695",
+                    "street": "East Katella Avenue",
+                    "city": "Anaheim",
+                    "county": "Orange County",
+                    "state": "California",
+                    "country": "United States",
+                    "postalCode": "92806",
+                    "apartment": "",
+                    "name": "VIP customer"
+                },
+                "teams": [
+
+                ]
+            }
+        },
+        "list": {
+            "request": {
+
+            },
+            "response": [{
+                    "id": "BfToZHPxirDp6PTcSVH~v0jw",
+                    "name": "test",
+                    "location": [-117.8764809,
+                        33.8078691
+                    ],
+                    "address": {
+                        "number": "2695",
+                        "street": "East Katella Avenue",
+                        "city": "Anaheim",
+                        "county": "Orange County",
+                        "state": "California",
+                        "country": "United States",
+                        "postalCode": "92806",
+                        "apartment": "",
+                        "name": "VIP customer"
+                    },
+                    "teams": [
+                        "MVVv1216WJeyhTIJtHBOSM*R"
+                    ]
+                },
+                {
+                    "id": "pEqvT8ul5ac5QhY4*mPMzm8h",
+                    "name": "VIP customer",
+                    "location": [-117.8764809,
+                        33.8078691
+                    ],
+                    "address": {
+                        "number": "2695",
+                        "street": "East Katella Avenue",
+                        "city": "Anaheim",
+                        "county": "Orange County",
+                        "state": "California",
+                        "country": "United States",
+                        "postalCode": "92806",
+                        "apartment": "",
+                        "name": "VIP customer"
+                    },
+                    "teams": [
+
+                    ]
+                }
+            ]
+        },
+        "update": {
+            "request": {
+                "id": "BfToZHPxirDp6PTcSVH~v0jw",
+                "name": "VIP customer Hub",
+                "address": {
+                    "apartment": "",
+                    "state": "California",
+                    "postalCode": "90015",
+                    "number": "1111",
+                    "street": "South Figueroa Street",
+                    "city": "Los Angeles",
+                    "country": "United States",
+                    "name": "VIP customer"
+                },
+                "teams": [
+                    "kq5MFBzYNWhp1rumJEfGUTqS"
+                ]
+            },
+            "response": {
+                "id": "BfToZHPxirDp6PTcSVH~v0jw",
+                "name": "VIP customer Hub",
+                "location": [-118.2671588,
+                    34.0432309
+                ],
+                "address": {
+                    "number": "1111",
+                    "street": "South Figueroa Street",
+                    "city": "Los Angeles",
+                    "county": "Los Angeles County",
+                    "state": "California",
+                    "country": "United States",
+                    "postalCode": "90015",
+                    "apartment": "",
+                    "name": "VIP customer"
+                },
+                "teams": [
+
+                ]
+            }
+        }
+    },
+    "organizations": {
+        "get": {
+            "request": {
+                "id": "MfLA8ysMFrx5jnCRsFHEn6DO"
+            },
+            "response": {
+                "id": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "name": "onfleet",
+                "email": "dmenza@onfleet.com",
+                "driverSupportEmail": "dmenza@onfleet.com",
+                "timezone": "America/Adak",
+                "country": "US",
+                "isFulfillment": false
+            }
+        }
+    },
+    "recipients": {
+        "create": {
+            "request": {
+                "name": "Dan Menza",
+                "phone": "650-555-1155",
+                "notes": "Always orders our GSC special"
+            },
+            "response": {
+                "id": "omAhCmVVKXRJfLYJeogz~9Jm",
+                "timeCreated": 1683215070000,
+                "timeLastModified": 1683215070991,
+                "name": "Dan Menza",
+                "phone": "+16505551155",
+                "notes": "Always orders our GSC special",
+                "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "skipSMSNotifications": false,
+                "metadata": [
+
+                ]
+            }
+        },
+        "update": {
+            "request": {
+                "id": "omAhCmVVKXRJfLYJeogz~9Jm",
+                "name": "Neiman Runtilly"
+            },
+            "response": {
+                "id": "omAhCmVVKXRJfLYJeogz~9Jm",
+                "timeCreated": 1683215070000,
+                "timeLastModified": 1683215314367,
+                "name": "Neiman Runtilly",
+                "phone": "+16505551155",
+                "notes": "Always orders our GSC special",
+                "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "skipSMSNotifications": false,
+                "metadata": [
+
+                ]
+            }
+        },
+        "get": {
+            "request": {
+                "id": "omAhCmVVKXRJfLYJeogz~9Jm"
+            },
+            "response": {
+                "id": "omAhCmVVKXRJfLYJeogz~9Jm",
+                "timeCreated": 1683215070000,
+                "timeLastModified": 1683215428109,
+                "name": "Neiman Runtilly",
+                "phone": "+16505551155",
+                "notes": "Always orders our GSC special",
+                "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "skipSMSNotifications": false,
+                "metadata": [
+
+                ]
+            }
+        },
+        "get_by_name": {
+            "request": {
+                "name": "neiman runtilly"
+            },
+            "response": {
+                "id": "wRB8H~8VduDzg1WLZ*SLVNcG",
+                "timeCreated": 1682438564000,
+                "timeLastModified": 1682438643550,
+                "name": "Neiman Runtilly",
+                "phone": "+16505551133",
+                "notes": "Always orders our GSC special",
+                "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "skipSMSNotifications": false,
+                "metadata": [
+
+                ]
+            }
+        },
+        "get_by_phone": {
+            "request": {
+                "phone": "+16505551133"
+            },
+            "response": {
+                "id": "wRB8H~8VduDzg1WLZ*SLVNcG",
+                "timeCreated": 1682438564000,
+                "timeLastModified": 1682438643550,
+                "name": "Neiman Runtilly",
+                "phone": "+16505551133",
+                "notes": "Always orders our GSC special",
+                "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "skipSMSNotifications": false,
+                "metadata": [
+
+                ]
+            }
+        }
+    },
+    "tasks": {
+        "create": {
+            "request": {
+                "destination": {
+                    "address": {
+                        "unparsed": "2829 Vallejo St, SF, CA, USA"
+                    },
+                    "notes": "Small green door by garage door has pin pad, enter *4821*"
+                },
+                "recipients": [{
+                    "name": "Blas Silkovich",
+                    "phone": "650-555-4481",
+                    "notes": "Knows Neiman, VIP status."
+                }],
+                "completeAfter": 1455151071727,
+                "notes": "Order 332: 24oz Stumptown Finca El Puente, 10 x Aji de Gallina Empanadas, 13-inch Lelenitas Tres Leches",
+                "autoAssign": {
+                    "mode": "distance"
+                }
+            },
+            "response": {
+                "id": "WBWlS98FUplWJB2bEx7tNw2Y",
+                "timeCreated": 1683236145000,
+                "timeLastModified": 1683236145406,
+                "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "shortId": "ca9283bb",
+                "trackingURL": "https://staging.onfleet.com/t/ca9283bb9a",
+                "worker": null,
+                "merchant": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "executor": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "creator": "2x33Oq~3y7GX7JLJq5MN8YlR",
+                "dependencies": [
+
+                ],
+                "state": 0,
+                "completeAfter": 1455151071727,
+                "completeBefore": null,
+                "pickupTask": false,
+                "notes": "Order 332: 24oz Stumptown Finca El Puente, 10 x Aji de Gallina Empanadas, 13-inch Lelenitas Tres Leches",
+                "completionDetails": {
+                    "failureNotes": "",
+                    "successNotes": "",
+                    "failureReason": "NONE",
+                    "events": [
+
+                    ],
+                    "actions": [
+
+                    ],
+                    "time": null,
+                    "signatureUploadId": null,
+                    "photoUploadId": null,
+                    "photoUploadIds": null,
+                    "firstLocation": [
+
+                    ],
+                    "lastLocation": [
+
+                    ],
+                    "unavailableAttachments": [
+
+                    ]
+                },
+                "feedback": [
+
+                ],
+                "metadata": [
+
+                ],
+                "overrides": {
+                    "recipientName": null,
+                    "recipientNotes": null,
+                    "recipientSkipSMSNotifications": null,
+                    "useMerchantForProxy": null
+                },
+                "quantity": 0,
+                "additionalQuantities": {
+                    "quantityA": 0,
+                    "quantityB": 0,
+                    "quantityC": 0
+                },
+                "serviceTime": 0,
+                "identity": {
+                    "failedScanCount": 0,
+                    "checksum": null
+                },
+                "appearance": {
+                    "triangleColor": null
+                },
+                "scanOnlyRequiredBarcodes": false,
+                "container": {
+                    "type": "ORGANIZATION",
+                    "organization": "MfLA8ysMFrx5jnCRsFHEn6DO"
+                },
+                "trackingViewed": false,
+                "recipients": [{
+                    "id": "C~I53TmVbozP0YCeT1vkksFQ",
+                    "timeCreated": 1682439229000,
+                    "timeLastModified": 1683236145380,
+                    "name": "Blas Silkovich",
+                    "phone": "+16505554481",
+                    "notes": "Knows Neiman, VIP status.",
+                    "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                    "skipSMSNotifications": false,
+                    "metadata": [
+
+                    ]
+                }],
+                "destination": {
+                    "id": "xUQXOPMXsdUyTnq8aMw7WloW",
+                    "timeCreated": 1683236145000,
+                    "timeLastModified": 1683236145367,
+                    "location": [-122.4438376,
+                        37.7939987
+                    ],
+                    "address": {
+                        "apartment": "",
+                        "state": "California",
+                        "postalCode": "94123",
+                        "number": "2829",
+                        "street": "Vallejo Street",
+                        "city": "San Francisco",
+                        "country": "United States"
+                    },
+                    "notes": "Small green door by garage door has pin pad, enter *4821*",
+                    "metadata": [
+
+                    ],
+                    "googlePlaceId": "ChIJQSINYtKAhYARCKOYhQ6z3nI",
+                    "warnings": [
+
+                    ],
+                    "useGPS": true
+                },
+                "didAutoAssign": false
+            }
+        },
+        "list": {
+            "request": {
+                "from": "from=1455072025000"
+            },
+            "response": {
+                "tasks": [{
+                        "id": "3NjXnLklf3zVY4jWFaWZJ8ru",
+                        "timeCreated": 1682439229000,
+                        "timeLastModified": 1682439837039,
+                        "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                        "shortId": "4834cd51",
+                        "trackingURL": "https://staging.onfleet.com/t/4834cd5130",
+                        "worker": "*a9jouIFuEodzIGsTKWV12qM",
+                        "merchant": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                        "executor": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                        "creator": "2x33Oq~3y7GX7JLJq5MN8YlR",
+                        "dependencies": [
+
+                        ],
+                        "state": 1,
+                        "completeAfter": 1455151020000,
+                        "completeBefore": null,
+                        "pickupTask": false,
+                        "notes": "Patxi's deep dish meat lover special, 2 bottles of Basque cider",
+                        "completionDetails": {
+                            "failureNotes": "",
+                            "successNotes": "",
+                            "failureReason": "NONE",
+                            "events": [
+
+                            ],
+                            "actions": [
+
+                            ],
+                            "time": null,
+                            "signatureUploadId": null,
+                            "photoUploadId": null,
+                            "photoUploadIds": null,
+                            "firstLocation": [
+
+                            ],
+                            "lastLocation": [
+
+                            ],
+                            "unavailableAttachments": [
+
+                            ]
+                        },
+                        "feedback": [
+
+                        ],
+                        "metadata": [
+
+                        ],
+                        "overrides": {
+                            "recipientName": null,
+                            "recipientNotes": null,
+                            "recipientSkipSMSNotifications": null,
+                            "useMerchantForProxy": null
+                        },
+                        "quantity": 0,
+                        "additionalQuantities": {
+                            "quantityA": 0,
+                            "quantityB": 0,
+                            "quantityC": 0
+                        },
+                        "serviceTime": 0,
+                        "identity": {
+                            "failedScanCount": 0,
+                            "checksum": null
+                        },
+                        "appearance": {
+                            "triangleColor": null
+                        },
+                        "scanOnlyRequiredBarcodes": false,
+                        "container": {
+                            "type": "WORKER",
+                            "worker": "*a9jouIFuEodzIGsTKWV12qM"
+                        },
+                        "trackingViewed": false,
+                        "recipients": [{
+                            "id": "C~I53TmVbozP0YCeT1vkksFQ",
+                            "timeCreated": 1682439229000,
+                            "timeLastModified": 1683236259180,
+                            "name": "Blas Silkovich",
+                            "phone": "+16505554481",
+                            "notes": "Knows Neiman, VIP status.",
+                            "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                            "skipSMSNotifications": false,
+                            "metadata": [
+
+                            ]
+                        }],
+                        "eta": null,
+                        "delayTime": null,
+                        "estimatedCompletionTime": null,
+                        "estimatedArrivalTime": null,
+                        "destination": {
+                            "id": "ncqQ8LsL*M7P3xmk39~WWAwt",
+                            "timeCreated": 1682439229000,
+                            "timeLastModified": 1682439837033,
+                            "location": [-122.4438376,
+                                37.7939987
+                            ],
+                            "address": {
+                                "apartment": "",
+                                "state": "California",
+                                "postalCode": "94123",
+                                "number": "2829",
+                                "street": "Vallejo Street",
+                                "city": "San Francisco",
+                                "country": "United States"
+                            },
+                            "notes": "Small green door by garage door has pin pad, enter *4821*",
+                            "metadata": [
+
+                            ],
+                            "googlePlaceId": "ChIJQSINYtKAhYARCKOYhQ6z3nI",
+                            "warnings": [
+
+                            ],
+                            "useGPS": true
+                        }
+                    },
+                    {
+                        "id": "WBWlS98FUplWJB2bEx7tNw2Y",
+                        "timeCreated": 1683236145000,
+                        "timeLastModified": 1683236145406,
+                        "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                        "shortId": "ca9283bb",
+                        "trackingURL": "https://staging.onfleet.com/t/ca9283bb9a",
+                        "worker": null,
+                        "merchant": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                        "executor": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                        "creator": "2x33Oq~3y7GX7JLJq5MN8YlR",
+                        "dependencies": [
+
+                        ],
+                        "state": 0,
+                        "completeAfter": 1455151071727,
+                        "completeBefore": null,
+                        "pickupTask": false,
+                        "notes": "Order 332: 24oz Stumptown Finca El Puente, 10 x Aji de Gallina Empanadas, 13-inch Lelenitas Tres Leches",
+                        "completionDetails": {
+                            "failureNotes": "",
+                            "successNotes": "",
+                            "failureReason": "NONE",
+                            "events": [
+
+                            ],
+                            "actions": [
+
+                            ],
+                            "time": null,
+                            "signatureUploadId": null,
+                            "photoUploadId": null,
+                            "photoUploadIds": null,
+                            "firstLocation": [
+
+                            ],
+                            "lastLocation": [
+
+                            ],
+                            "unavailableAttachments": [
+
+                            ]
+                        },
+                        "feedback": [
+
+                        ],
+                        "metadata": [
+
+                        ],
+                        "overrides": {
+                            "recipientName": null,
+                            "recipientNotes": null,
+                            "recipientSkipSMSNotifications": null,
+                            "useMerchantForProxy": null
+                        },
+                        "quantity": 0,
+                        "additionalQuantities": {
+                            "quantityA": 0,
+                            "quantityB": 0,
+                            "quantityC": 0
+                        },
+                        "serviceTime": 0,
+                        "identity": {
+                            "failedScanCount": 0,
+                            "checksum": null
+                        },
+                        "appearance": {
+                            "triangleColor": null
+                        },
+                        "scanOnlyRequiredBarcodes": false,
+                        "container": {
+                            "type": "ORGANIZATION",
+                            "organization": "MfLA8ysMFrx5jnCRsFHEn6DO"
+                        },
+                        "trackingViewed": false,
+                        "delayTime": null,
+                        "estimatedCompletionTime": null,
+                        "estimatedArrivalTime": null,
+                        "recipients": [{
+                            "id": "C~I53TmVbozP0YCeT1vkksFQ",
+                            "timeCreated": 1682439229000,
+                            "timeLastModified": 1683236259180,
+                            "name": "Blas Silkovich",
+                            "phone": "+16505554481",
+                            "notes": "Knows Neiman, VIP status.",
+                            "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                            "skipSMSNotifications": false,
+                            "metadata": [
+
+                            ]
+                        }],
+                        "eta": null,
+                        "destination": {
+                            "id": "xUQXOPMXsdUyTnq8aMw7WloW",
+                            "timeCreated": 1683236145000,
+                            "timeLastModified": 1683236145367,
+                            "location": [-122.4438376,
+                                37.7939987
+                            ],
+                            "address": {
+                                "apartment": "",
+                                "state": "California",
+                                "postalCode": "94123",
+                                "number": "2829",
+                                "street": "Vallejo Street",
+                                "city": "San Francisco",
+                                "country": "United States"
+                            },
+                            "notes": "Small green door by garage door has pin pad, enter *4821*",
+                            "metadata": [
+
+                            ],
+                            "googlePlaceId": "ChIJQSINYtKAhYARCKOYhQ6z3nI",
+                            "warnings": [
+
+                            ],
+                            "useGPS": true
+                        }
+                    },
+                    {
+                        "id": "tsAmUDYKWPG8L1VA21fyrMry",
+                        "timeCreated": 1683236228000,
+                        "timeLastModified": 1683236228165,
+                        "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                        "shortId": "aba44fec",
+                        "trackingURL": "https://staging.onfleet.com/t/aba44fec6a",
+                        "worker": null,
+                        "merchant": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                        "executor": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                        "creator": "2x33Oq~3y7GX7JLJq5MN8YlR",
+                        "dependencies": [
+
+                        ],
+                        "state": 0,
+                        "completeAfter": 1455151071727,
+                        "completeBefore": null,
+                        "pickupTask": false,
+                        "notes": "Order 332: 24oz Stumptown Finca El Puente, 10 x Aji de Gallina Empanadas, 13-inch Lelenitas Tres Leches",
+                        "completionDetails": {
+                            "failureNotes": "",
+                            "successNotes": "",
+                            "failureReason": "NONE",
+                            "events": [
+
+                            ],
+                            "actions": [
+
+                            ],
+                            "time": null,
+                            "signatureUploadId": null,
+                            "photoUploadId": null,
+                            "photoUploadIds": null,
+                            "firstLocation": [
+
+                            ],
+                            "lastLocation": [
+
+                            ],
+                            "unavailableAttachments": [
+
+                            ]
+                        },
+                        "feedback": [
+
+                        ],
+                        "metadata": [
+
+                        ],
+                        "overrides": {
+                            "recipientName": null,
+                            "recipientNotes": null,
+                            "recipientSkipSMSNotifications": null,
+                            "useMerchantForProxy": null
+                        },
+                        "quantity": 0,
+                        "additionalQuantities": {
+                            "quantityA": 0,
+                            "quantityB": 0,
+                            "quantityC": 0
+                        },
+                        "serviceTime": 0,
+                        "identity": {
+                            "failedScanCount": 0,
+                            "checksum": null
+                        },
+                        "appearance": {
+                            "triangleColor": null
+                        },
+                        "scanOnlyRequiredBarcodes": false,
+                        "container": {
+                            "type": "ORGANIZATION",
+                            "organization": "MfLA8ysMFrx5jnCRsFHEn6DO"
+                        },
+                        "trackingViewed": false,
+                        "delayTime": null,
+                        "estimatedCompletionTime": null,
+                        "estimatedArrivalTime": null,
+                        "recipients": [{
+                            "id": "C~I53TmVbozP0YCeT1vkksFQ",
+                            "timeCreated": 1682439229000,
+                            "timeLastModified": 1683236259180,
+                            "name": "Blas Silkovich",
+                            "phone": "+16505554481",
+                            "notes": "Knows Neiman, VIP status.",
+                            "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                            "skipSMSNotifications": false,
+                            "metadata": [
+
+                            ]
+                        }],
+                        "eta": null,
+                        "destination": {
+                            "id": "8xxfPlMoir~b2pa2PjSka6nL",
+                            "timeCreated": 1683236228000,
+                            "timeLastModified": 1683236228129,
+                            "location": [-122.4438376,
+                                37.7939987
+                            ],
+                            "address": {
+                                "apartment": "",
+                                "state": "California",
+                                "postalCode": "94123",
+                                "number": "2829",
+                                "street": "Vallejo Street",
+                                "city": "San Francisco",
+                                "country": "United States"
+                            },
+                            "notes": "Small green door by garage door has pin pad, enter *4821*",
+                            "metadata": [
+
+                            ],
+                            "googlePlaceId": "ChIJQSINYtKAhYARCKOYhQ6z3nI",
+                            "warnings": [
+
+                            ],
+                            "useGPS": true
+                        }
+                    },
+                    {
+                        "id": "fNr1LoTeKDe8Tdhe9~pUiuPD",
+                        "timeCreated": 1683236259000,
+                        "timeLastModified": 1683236259204,
+                        "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                        "shortId": "765ab964",
+                        "trackingURL": "https://staging.onfleet.com/t/765ab9648e",
+                        "worker": null,
+                        "merchant": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                        "executor": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                        "creator": "2x33Oq~3y7GX7JLJq5MN8YlR",
+                        "dependencies": [
+
+                        ],
+                        "state": 0,
+                        "completeAfter": 1455151071727,
+                        "completeBefore": null,
+                        "pickupTask": false,
+                        "notes": "Order 332: 24oz Stumptown Finca El Puente, 10 x Aji de Gallina Empanadas, 13-inch Lelenitas Tres Leches",
+                        "completionDetails": {
+                            "failureNotes": "",
+                            "successNotes": "",
+                            "failureReason": "NONE",
+                            "events": [
+
+                            ],
+                            "actions": [
+
+                            ],
+                            "time": null,
+                            "signatureUploadId": null,
+                            "photoUploadId": null,
+                            "photoUploadIds": null,
+                            "firstLocation": [
+
+                            ],
+                            "lastLocation": [
+
+                            ],
+                            "unavailableAttachments": [
+
+                            ]
+                        },
+                        "feedback": [
+
+                        ],
+                        "metadata": [
+
+                        ],
+                        "overrides": {
+                            "recipientName": null,
+                            "recipientNotes": null,
+                            "recipientSkipSMSNotifications": null,
+                            "useMerchantForProxy": null
+                        },
+                        "quantity": 0,
+                        "additionalQuantities": {
+                            "quantityA": 0,
+                            "quantityB": 0,
+                            "quantityC": 0
+                        },
+                        "serviceTime": 0,
+                        "identity": {
+                            "failedScanCount": 0,
+                            "checksum": null
+                        },
+                        "appearance": {
+                            "triangleColor": null
+                        },
+                        "scanOnlyRequiredBarcodes": false,
+                        "container": {
+                            "type": "ORGANIZATION",
+                            "organization": "MfLA8ysMFrx5jnCRsFHEn6DO"
+                        },
+                        "trackingViewed": false,
+                        "delayTime": null,
+                        "estimatedCompletionTime": null,
+                        "estimatedArrivalTime": null,
+                        "recipients": [{
+                            "id": "C~I53TmVbozP0YCeT1vkksFQ",
+                            "timeCreated": 1682439229000,
+                            "timeLastModified": 1683236259180,
+                            "name": "Blas Silkovich",
+                            "phone": "+16505554481",
+                            "notes": "Knows Neiman, VIP status.",
+                            "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                            "skipSMSNotifications": false,
+                            "metadata": [
+
+                            ]
+                        }],
+                        "eta": null,
+                        "destination": {
+                            "id": "swaD5Si15RzG6hTYaX1MPVQo",
+                            "timeCreated": 1683236259000,
+                            "timeLastModified": 1683236259170,
+                            "location": [-122.4438376,
+                                37.7939987
+                            ],
+                            "address": {
+                                "apartment": "",
+                                "state": "California",
+                                "postalCode": "94123",
+                                "number": "2829",
+                                "street": "Vallejo Street",
+                                "city": "San Francisco",
+                                "country": "United States"
+                            },
+                            "notes": "Small green door by garage door has pin pad, enter *4821*",
+                            "metadata": [
+
+                            ],
+                            "googlePlaceId": "ChIJQSINYtKAhYARCKOYhQ6z3nI",
+                            "warnings": [
+
+                            ],
+                            "useGPS": true
+                        }
+                    }
+                ]
+            }
+        },
+        "get": {
+            "request": {
+                "id": "WBWlS98FUplWJB2bEx7tNw2Y"
+            },
+            "response": {
+                "id": "WBWlS98FUplWJB2bEx7tNw2Y",
+                "timeCreated": 1683236145000,
+                "timeLastModified": 1683236145406,
+                "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "shortId": "ca9283bb",
+                "trackingURL": "https://staging.onfleet.com/t/ca9283bb9a",
+                "worker": null,
+                "merchant": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "executor": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "creator": "2x33Oq~3y7GX7JLJq5MN8YlR",
+                "dependencies": [
+
+                ],
+                "state": 0,
+                "completeAfter": 1455151071727,
+                "completeBefore": null,
+                "pickupTask": false,
+                "notes": "Order 332: 24oz Stumptown Finca El Puente, 10 x Aji de Gallina Empanadas, 13-inch Lelenitas Tres Leches",
+                "completionDetails": {
+                    "failureNotes": "",
+                    "successNotes": "",
+                    "failureReason": "NONE",
+                    "events": [
+
+                    ],
+                    "actions": [
+
+                    ],
+                    "time": null,
+                    "signatureUploadId": null,
+                    "photoUploadId": null,
+                    "photoUploadIds": null,
+                    "firstLocation": [
+
+                    ],
+                    "lastLocation": [
+
+                    ],
+                    "unavailableAttachments": [
+
+                    ]
+                },
+                "feedback": [
+
+                ],
+                "metadata": [
+
+                ],
+                "overrides": {
+                    "recipientName": null,
+                    "recipientNotes": null,
+                    "recipientSkipSMSNotifications": null,
+                    "useMerchantForProxy": null
+                },
+                "quantity": 0,
+                "additionalQuantities": {
+                    "quantityA": 0,
+                    "quantityB": 0,
+                    "quantityC": 0
+                },
+                "serviceTime": 0,
+                "identity": {
+                    "failedScanCount": 0,
+                    "checksum": null
+                },
+                "appearance": {
+                    "triangleColor": null
+                },
+                "scanOnlyRequiredBarcodes": false,
+                "container": {
+                    "type": "ORGANIZATION",
+                    "organization": "MfLA8ysMFrx5jnCRsFHEn6DO"
+                },
+                "trackingViewed": false,
+                "estimatedCompletionTime": null,
+                "estimatedArrivalTime": null,
+                "delayTime": null,
+                "eta": null,
+                "recipients": [{
+                    "id": "C~I53TmVbozP0YCeT1vkksFQ",
+                    "timeCreated": 1682439229000,
+                    "timeLastModified": 1683236259180,
+                    "name": "Blas Silkovich",
+                    "phone": "+16505554481",
+                    "notes": "Knows Neiman, VIP status.",
+                    "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                    "skipSMSNotifications": false,
+                    "metadata": [
+
+                    ]
+                }],
+                "destination": {
+                    "id": "xUQXOPMXsdUyTnq8aMw7WloW",
+                    "timeCreated": 1683236145000,
+                    "timeLastModified": 1683236145367,
+                    "location": [-122.4438376,
+                        37.7939987
+                    ],
+                    "address": {
+                        "apartment": "",
+                        "state": "California",
+                        "postalCode": "94123",
+                        "number": "2829",
+                        "street": "Vallejo Street",
+                        "city": "San Francisco",
+                        "country": "United States"
+                    },
+                    "notes": "Small green door by garage door has pin pad, enter *4821*",
+                    "metadata": [
+
+                    ],
+                    "googlePlaceId": "ChIJQSINYtKAhYARCKOYhQ6z3nI",
+                    "warnings": [
+
+                    ],
+                    "useGPS": true
+                }
+            }
+        },
+        "get_by_short_id": {
+            "request": {
+                "shortId": "ca9283bb"
+            },
+            "response": {
+                "id": "WBWlS98FUplWJB2bEx7tNw2Y",
+                "timeCreated": 1683236145000,
+                "timeLastModified": 1683236145406,
+                "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "shortId": "ca9283bb",
+                "trackingURL": "https://staging.onfleet.com/t/ca9283bb9a",
+                "worker": null,
+                "merchant": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "executor": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "creator": "2x33Oq~3y7GX7JLJq5MN8YlR",
+                "dependencies": [
+
+                ],
+                "state": 0,
+                "completeAfter": 1455151071727,
+                "completeBefore": null,
+                "pickupTask": false,
+                "notes": "Order 332: 24oz Stumptown Finca El Puente, 10 x Aji de Gallina Empanadas, 13-inch Lelenitas Tres Leches",
+                "completionDetails": {
+                    "failureNotes": "",
+                    "successNotes": "",
+                    "failureReason": "NONE",
+                    "events": [
+
+                    ],
+                    "actions": [
+
+                    ],
+                    "time": null,
+                    "signatureUploadId": null,
+                    "photoUploadId": null,
+                    "photoUploadIds": null,
+                    "firstLocation": [
+
+                    ],
+                    "lastLocation": [
+
+                    ],
+                    "unavailableAttachments": [
+
+                    ]
+                },
+                "feedback": [
+
+                ],
+                "metadata": [
+
+                ],
+                "overrides": {
+                    "recipientName": null,
+                    "recipientNotes": null,
+                    "recipientSkipSMSNotifications": null,
+                    "useMerchantForProxy": null
+                },
+                "quantity": 0,
+                "additionalQuantities": {
+                    "quantityA": 0,
+                    "quantityB": 0,
+                    "quantityC": 0
+                },
+                "serviceTime": 0,
+                "identity": {
+                    "failedScanCount": 0,
+                    "checksum": null
+                },
+                "appearance": {
+                    "triangleColor": null
+                },
+                "scanOnlyRequiredBarcodes": false,
+                "container": {
+                    "type": "ORGANIZATION",
+                    "organization": "MfLA8ysMFrx5jnCRsFHEn6DO"
+                },
+                "trackingViewed": false,
+                "estimatedCompletionTime": null,
+                "estimatedArrivalTime": null,
+                "delayTime": null,
+                "eta": null,
+                "recipients": [{
+                    "id": "C~I53TmVbozP0YCeT1vkksFQ",
+                    "timeCreated": 1682439229000,
+                    "timeLastModified": 1683236259180,
+                    "name": "Blas Silkovich",
+                    "phone": "+16505554481",
+                    "notes": "Knows Neiman, VIP status.",
+                    "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                    "skipSMSNotifications": false,
+                    "metadata": [
+
+                    ]
+                }],
+                "destination": {
+                    "id": "xUQXOPMXsdUyTnq8aMw7WloW",
+                    "timeCreated": 1683236145000,
+                    "timeLastModified": 1683236145367,
+                    "location": [-122.4438376,
+                        37.7939987
+                    ],
+                    "address": {
+                        "apartment": "",
+                        "state": "California",
+                        "postalCode": "94123",
+                        "number": "2829",
+                        "street": "Vallejo Street",
+                        "city": "San Francisco",
+                        "country": "United States"
+                    },
+                    "notes": "Small green door by garage door has pin pad, enter *4821*",
+                    "metadata": [
+
+                    ],
+                    "googlePlaceId": "ChIJQSINYtKAhYARCKOYhQ6z3nI",
+                    "warnings": [
+
+                    ],
+                    "useGPS": true
+                }
+            }
+        },
+        "clone": {
+            "request": {
+                "id": "WBWlS98FUplWJB2bEx7tNw2Y"
+            },
+            "response": {
+                "id": "BcxvWCdJ~BZYNflQWkI~ZLaH",
+                "timeCreated": 1683238138000,
+                "timeLastModified": 1683238138980,
+                "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "shortId": "43b752e4",
+                "trackingURL": "https://staging.onfleet.com/t/43b752e4c3",
+                "worker": null,
+                "merchant": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "executor": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "creator": "2x33Oq~3y7GX7JLJq5MN8YlR",
+                "dependencies": [
+
+                ],
+                "state": 0,
+                "completeAfter": null,
+                "completeBefore": null,
+                "pickupTask": false,
+                "notes": "Order 332: 24oz Stumptown Finca El Puente, 10 x Aji de Gallina Empanadas, 13-inch Lelenitas Tres Leches",
+                "completionDetails": {
+                    "failureNotes": "",
+                    "successNotes": "",
+                    "failureReason": "NONE",
+                    "events": [
+
+                    ],
+                    "actions": [
+
+                    ],
+                    "time": null,
+                    "signatureUploadId": null,
+                    "photoUploadId": null,
+                    "photoUploadIds": null,
+                    "firstLocation": [
+
+                    ],
+                    "lastLocation": [
+
+                    ],
+                    "unavailableAttachments": [
+
+                    ]
+                },
+                "feedback": [
+
+                ],
+                "metadata": [
+
+                ],
+                "overrides": {
+                    "recipientName": null,
+                    "recipientNotes": null,
+                    "recipientSkipSMSNotifications": null,
+                    "useMerchantForProxy": null
+                },
+                "quantity": 0,
+                "additionalQuantities": {
+                    "quantityA": 0,
+                    "quantityB": 0,
+                    "quantityC": 0
+                },
+                "serviceTime": 0,
+                "identity": {
+                    "failedScanCount": 0,
+                    "checksum": null
+                },
+                "appearance": {
+                    "triangleColor": null
+                },
+                "scanOnlyRequiredBarcodes": false,
+                "sourceTaskId": "WBWlS98FUplWJB2bEx7tNw2Y",
+                "container": {
+                    "type": "ORGANIZATION",
+                    "organization": "MfLA8ysMFrx5jnCRsFHEn6DO"
+                },
+                "trackingViewed": false,
+                "recipients": [{
+                    "id": "C~I53TmVbozP0YCeT1vkksFQ",
+                    "timeCreated": 1682439229000,
+                    "timeLastModified": 1683236259180,
+                    "name": "Blas Silkovich",
+                    "phone": "+16505554481",
+                    "notes": "Knows Neiman, VIP status.",
+                    "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                    "skipSMSNotifications": false,
+                    "metadata": [
+
+                    ]
+                }],
+                "destination": {
+                    "id": "Im7HCZVt*H3BA*HJQd95sDAg",
+                    "timeCreated": 1683238138000,
+                    "timeLastModified": 1683238138936,
+                    "location": [-122.4438376,
+                        37.7939987
+                    ],
+                    "address": {
+                        "apartment": "",
+                        "state": "California",
+                        "postalCode": "94123",
+                        "number": "2829",
+                        "street": "Vallejo Street",
+                        "city": "San Francisco",
+                        "country": "United States"
+                    },
+                    "notes": "Small green door by garage door has pin pad, enter *4821*",
+                    "metadata": [
+
+                    ],
+                    "googlePlaceId": "ChIJQSINYtKAhYARCKOYhQ6z3nI",
+                    "warnings": [
+
+                    ],
+                    "useGPS": true
+                }
+            }
+        },
+        "delete": {
+            "request": {
+                "id": "WBWlS98FUplWJB2bEx7tNw2Y"
+            },
+            "response": {
+                "status": 200
+            }
+        }
+    },
+    "teams": {
+        "create": {
+            "request": {
+                "name": "test",
+                "workers": [
+                    "*a9jouIFuEodzIGsTKWV12qM"
+                ],
+                "managers": [
+                    "2x33Oq~3y7GX7JLJq5MN8YlR"
+                ],
+                "hub": "BfToZHPxirDp6PTcSVH~v0jw"
+            },
+            "response": {
+                "id": "RdPL4KB5UiULu~N4zKug472I",
+                "timeCreated": 1683252309000,
+                "timeLastModified": 1683252309855,
+                "name": "test",
+                "workers": [
+                    "*a9jouIFuEodzIGsTKWV12qM"
+                ],
+                "managers": [
+
+                ],
+                "hub": "BfToZHPxirDp6PTcSVH~v0jw",
+                "enableSelfAssignment": false
+            }
+        },
+        "list": {
+            "request": {
+
+            },
+            "response": [{
+                    "id": "MVVv1216WJeyhTIJtHBOSM*R",
+                    "timeCreated": 1682435289000,
+                    "timeLastModified": 1682435289287,
+                    "name": "Sunset",
+                    "workers": [
+                        "*a9jouIFuEodzIGsTKWV12qM"
+                    ],
+                    "managers": [
+
+                    ],
+                    "hub": null,
+                    "enableSelfAssignment": false,
+                    "tasks": [
+
+                    ]
+                },
+                {
+                    "id": "RdPL4KB5UiULu~N4zKug472I",
+                    "timeCreated": 1683252309000,
+                    "timeLastModified": 1683252309855,
+                    "name": "test",
+                    "workers": [
+                        "*a9jouIFuEodzIGsTKWV12qM"
+                    ],
+                    "managers": [
+
+                    ],
+                    "hub": "BfToZHPxirDp6PTcSVH~v0jw",
+                    "enableSelfAssignment": false,
+                    "tasks": [
+
+                    ]
+                }
+            ]
+        },
+        "get": {
+            "request": {
+                "id": "MVVv1216WJeyhTIJtHBOSM*R"
+            },
+            "response": {
+                "id": "MVVv1216WJeyhTIJtHBOSM*R",
+                "timeCreated": 1682435289000,
+                "timeLastModified": 1682435289287,
+                "name": "Sunset",
+                "workers": [
+                    "*a9jouIFuEodzIGsTKWV12qM"
+                ],
+                "managers": [
+
+                ],
+                "hub": null,
+                "enableSelfAssignment": false,
+                "tasks": [
+
+                ]
+            }
+        },
+        "delete": {
+            "request": {
+                "id": "MVVv1216WJeyhTIJtHBOSM*R"
+            },
+            "response": {
+                "status": 200
+            }
+        }
+    },
+    "webhooks": {
+        "create": {
+            "request": {
+                "url": "https://test.com/onfleet/taskStart",
+                "trigger": 0
+            },
+            "response": {
+                "id": "9zqMxI79mRcHpXE111nILiPn",
+                "count": 0,
+                "url": "https://test.com/onfleet/taskStart",
+                "trigger": 0
+            }
+        },
+        "list": {
+            "request": {
+
+            },
+            "response": [{
+                    "id": "ZnVRY8rdfUwNPjHQy2QthtxZ",
+                    "name": "Webhook 1 - Driver Nearby",
+                    "count": 7,
+                    "url": "https://11ec4a02.ngrok.com/onfleet/driverNearby",
+                    "trigger": 2,
+                    "isEnabled": true
+                },
+                {
+                    "id": "9zqMxI79mRcHpXE111nILiPn",
+                    "name": "Webhook 2 - TaskStarted",
+                    "count": 3,
+                    "url": "https://11ec4a02.ngrok.com/onfleet/taskStart",
+                    "trigger": 0,
+                    "isEnabled": true
+                },
+                {
+                    "id": "8KD3PcIMsG*bC0imJ~EjR9GX",
+                    "name": "Webhook 3 - TaskCompleted on Zapier",
+                    "count": 6,
+                    "url": "https://hooks.zapier.com/hooks/catch/4212020/0z5pha/",
+                    "trigger": 3,
+                    "isEnabled": true
+                }
+            ]
+        },
+        "delete": {
+            "request": {
+                "id": "ZnVRY8rdfUwNPjHQy2QthtxZ"
+            },
+            "response": {
+                "status": 200
+            }
+        }
+    },
+    "workers": {
+        "create": {
+            "request": {
+                "name": "A Swartz",
+                "phone": "617-342-8800",
+                "teams": [
+                    "RdPL4KB5UiULu~N4zKug472I"
+                ],
+                "vehicle": {
+                    "type": "CAR",
+                    "description": "Tesla Model 3",
+                    "licensePlate": "FKNS9A",
+                    "color": "purple"
+                }
+            },
+            "response": {
+                "id": "297pOwKNak4p1eKxMKwomrBA",
+                "timeCreated": 1683254562000,
+                "timeLastModified": 1683254562455,
+                "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "name": "A Swartz",
+                "displayName": null,
+                "phone": "+16173428800",
+                "activeTask": null,
+                "tasks": [
+
+                ],
+                "onDuty": false,
+                "timeLastSeen": null,
+                "capacity": 0,
+                "additionalCapacities": {
+                    "capacityA": 0,
+                    "capacityB": 0,
+                    "capacityC": 0
+                },
+                "userData": {
+
+                },
+                "accountStatus": "INVITED",
+                "metadata": [
+
+                ],
+                "timezone": null,
+                "teams": [
+                    "RdPL4KB5UiULu~N4zKug472I"
+                ],
+                "imageUrl": null,
+                "addresses": {
+                    "routing": null
+                },
+                "vehicle": {
+                    "id": "lmPdV1fIAxWJeaMKSbc4cFjQ",
+                    "type": "CAR",
+                    "description": "Tesla Model 3",
+                    "licensePlate": "FKNS9A",
+                    "color": "purple",
+                    "timeLastModified": 1683254562447
+                }
+            }
+        },
+        "get": {
+            "request": {
+                "id": "297pOwKNak4p1eKxMKwomrBA"
+            },
+            "response": {
+                "id": "297pOwKNak4p1eKxMKwomrBA",
+                "timeCreated": 1683254562000,
+                "timeLastModified": 1683254562455,
+                "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "name": "A Swartz",
+                "displayName": null,
+                "phone": "+16173428800",
+                "activeTask": null,
+                "tasks": [
+
+                ],
+                "onDuty": false,
+                "timeLastSeen": null,
+                "capacity": 0,
+                "additionalCapacities": {
+                    "capacityA": 0,
+                    "capacityB": 0,
+                    "capacityC": 0
+                },
+                "userData": {
+
+                },
+                "accountStatus": "INVITED",
+                "metadata": [
+
+                ],
+                "timezone": null,
+                "teams": [
+                    "RdPL4KB5UiULu~N4zKug472I"
+                ],
+                "imageUrl": null,
+                "eta": null,
+                "addresses": {
+                    "routing": null
+                },
+                "vehicle": {
+                    "id": "lmPdV1fIAxWJeaMKSbc4cFjQ",
+                    "type": "CAR",
+                    "description": "Tesla Model 3",
+                    "licensePlate": "FKNS9A",
+                    "color": "purple",
+                    "timeLastModified": 1683254562447
+                }
+            }
+        },
+        "update": {
+            "request": {
+                "id": "297pOwKNak4p1eKxMKwomrBA",
+                "name": "Laura P",
+                "teams": [
+                    "RdPL4KB5UiULu~N4zKug472I"
+                ]
+            },
+            "response": {
+                "id": "297pOwKNak4p1eKxMKwomrBA",
+                "timeCreated": 1683254562000,
+                "timeLastModified": 1683255481514,
+                "organization": "MfLA8ysMFrx5jnCRsFHEn6DO",
+                "name": "Laura P",
+                "displayName": null,
+                "phone": "+16173428800",
+                "activeTask": null,
+                "tasks": [
+
+                ],
+                "onDuty": false,
+                "timeLastSeen": null,
+                "capacity": 0,
+                "additionalCapacities": {
+                    "capacityA": 0,
+                    "capacityB": 0,
+                    "capacityC": 0
+                },
+                "userData": {
+
+                },
+                "accountStatus": "INVITED",
+                "metadata": [
+
+                ],
+                "timezone": null,
+                "teams": [
+                    "RdPL4KB5UiULu~N4zKug472I"
+                ],
+                "imageUrl": null,
+                "eta": null,
+                "addresses": {
+                    "routing": null
+                },
+                "vehicle": {
+                    "id": "lmPdV1fIAxWJeaMKSbc4cFjQ",
+                    "type": "CAR",
+                    "description": "Tesla Model 3",
+                    "licensePlate": "FKNS9A",
+                    "color": "purple",
+                    "timeLastModified": 1683254562447
+                }
+            }
+        },
+        "delete": {
+            "request": {
+                "id": "297pOwKNak4p1eKxMKwomrBA"
+            },
+            "response": {
+                "status": 200
+            }
+        },
+        "get_tasks": {
+            "request": {
+                "id": "*a9jouIFuEodzIGsTKWV12qM"
+            },
+            "response": {
+                "tasks": [{
+                    "id": "3VtEMGudjwjjM60j7deSIY3j",
+                    "timeCreated": 1643317843000,
+                    "timeLastModified": 1643319602671,
+                    "organization": "nYrkNP6jZMSKgBwG9qG7ci3J",
+                    "shortId": "c77ff497",
+                    "trackingURL": "https://onf.lt/c77ff497",
+                    "worker": "ZxcnkJi~79nonYaMTQ960Mg2",
+                    "merchant": "nYrkNP6jZMSKgBwG9qG7ci3J",
+                    "executor": "nYrkNP6jZMSKgBwG9qG7ci3J",
+                    "creator": "vjw*RDMKDljKVDve1Vtcplgu",
+                    "dependencies": [],
+                    "state": 1,
+                    "completeAfter": null,
+                    "completeBefore": null,
+                    "pickupTask": false,
+                    "notes": "",
+                    "completionDetails": {
+                        "failureNotes": "",
+                        "failureReason": "NONE",
+                        "events": [],
+                        "actions": [],
+                        "time": null,
+                        "firstLocation": [],
+                        "lastLocation": [],
+                        "unavailableAttachments": []
+                    },
+                    "feedback": [],
+                    "metadata": [],
+                    "overrides": {},
+                    "quantity": 0,
+                    "additionalQuantities": {
+                        "quantityA": 0,
+                        "quantityB": 0,
+                        "quantityC": 0
+                    },
+                    "serviceTime": 0,
+                    "identity": {
+                        "failedScanCount": 0,
+                        "checksum": null
+                    },
+                    "appearance": {
+                        "triangleColor": null
+                    },
+                    "scanOnlyRequiredBarcodes": false,
+                    "container": {
+                        "type": "WORKER",
+                        "worker": "ZxcnkJi~79nonYaMTQ960Mg2"
+                    },
+                    "trackingViewed": false,
+                    "recipients": [],
+                    "eta": null,
+                    "delayTime": null,
+                    "estimatedCompletionTime": null,
+                    "estimatedArrivalTime": null,
+                    "destination": {
+                        "id": "nk5xGuf1eQguYXg1*mIVl0Ut",
+                        "timeCreated": 1643317843000,
+                        "timeLastModified": 1643317843121,
+                        "location": [-117.8764687,
+                            33.8078476
+                        ],
+                        "address": {
+                            "apartment": "",
+                            "state": "California",
+                            "postalCode": "92806",
+                            "number": "2695",
+                            "street": "East Katella Avenue",
+                            "city": "Anaheim",
+                            "country": "United States",
+                            "name": "Honda Center"
+                        },
+                        "notes": "",
+                        "metadata": [],
+                        "googlePlaceId": "ChIJXyczhHXX3IARFVUqyhMqiqg",
+                        "warnings": []
+                    }
+                }]
+            }
+        },
+        "get_worker_schedule": {
+            "request": {
+                "id": "*a9jouIFuEodzIGsTKWV12qM"
+            },
+            "response": {
+                "entries": [{
+                        "date": "2017-07-20",
+                        "shifts": [
+                            [1500591600000, 1500613200000]
+                        ],
+                        "timezone": "America/Los_Angeles"
+                    },
+                    {
+                        "date": "2017-07-17",
+                        "shifts": [
+                            [1500307200000, 1500314400000],
+                            [1500323100000, 1500336000000]
+                        ],
+                        "timezone": "America/Los_Angeles"
+                    }
+                ]
+            }
+        },
+        "set_worker_schedule": {
+            "request": {
+                "entries": [{
+                        "date": "2017-07-16",
+                        "shifts": [
+                            [1500213600000, 1500249600000]
+                        ],
+                        "timezone": "America/Los_Angeles"
+                    },
+                    {
+                        "date": "2017-07-20",
+                        "shifts": [
+                            [1500591600000, 1500613200000]
+                        ],
+                        "timezone": "America/Los_Angeles"
+                    },
+                    {
+                        "date": "2017-07-17",
+                        "shifts": [
+                            [1500307200000, 1500314400000],
+                            [1500323100000, 1500336000000]
+                        ],
+                        "timezone": "America/Los_Angeles"
+                    },
+                    {
+                        "date": "2016-07-17",
+                        "shifts": [
+                            [1500307200000, 1500314400000],
+                            [1500323100000, 1500336000000]
+                        ],
+                        "timezone": "America/Los_Angeles"
+                    }
+                ]
+            },
+            "response": {
+                "entries": [{
+                        "date": "2017-07-20",
+                        "shifts": [
+                            [1500591600000, 1500613200000]
+                        ],
+                        "timezone": "America/Los_Angeles"
+                    },
+                    {
+                        "date": "2017-07-17",
+                        "shifts": [
+                            [1500307200000, 1500314400000],
+                            [1500323100000, 1500336000000]
+                        ],
+                        "timezone": "America/Los_Angeles"
+                    }
+                ]
+            }
+        }
+    }
+}

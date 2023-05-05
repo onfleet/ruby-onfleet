@@ -10,26 +10,26 @@ require_relative '../onfleet'
 # A failed request is any non-200 response that a webhook request gets from your application.
 class Webhooks
   # ACTION: still needs to be tested
-  def create(body)
+  def create(config, body)
     method = 'post'
     path = 'webhooks'
 
-    Onfleet.request(method.to_sym, path, body.to_json)
+    Onfleet.request(config, method.to_sym, path, body.to_json)
   end
 
   # ACTION: still needs to be tested
-  def list
+  def list(config)
     method = 'get'
     path = 'webhooks'
 
-    Onfleet.request(method.to_sym, path)
+    Onfleet.request(config, method.to_sym, path)
   end
 
   # ACTION: still needs to be tested
-  def delete(id)
+  def delete(config, id)
     method = 'delete'
     path = "webhooks/#{id}"
 
-    Onfleet.request(method.to_sym, path)
+    Onfleet.request(config, method.to_sym, path)
   end
 end

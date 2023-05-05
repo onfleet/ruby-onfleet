@@ -5,84 +5,84 @@ require_relative '../onfleet'
 # Task assignment, state and dependencies are important concepts that
 # you should understand well prior to using the task endpoints.
 class Tasks
-  def create(body)
+  def create(config, body)
     method = 'post'
     path = 'tasks'
 
-    Onfleet.request(method.to_sym, path, body.to_json)
+    Onfleet.request(config, method.to_sym, path, body.to_json)
   end
 
   # ACTION: still needs to be tested
-  def batch_create(body)
+  def batch_create(config, body)
     method = 'post'
     path = 'tasks/batch'
 
-    Onfleet.request(method.to_sym, path, body.to_json)
+    Onfleet.request(config, method.to_sym, path, body.to_json)
   end
 
   # ACTION: still needs to be tested
-  def batch_create_async(body)
+  def batch_create_async(config, body)
     method = 'post'
     path = 'tasks/batch-async'
 
-    Onfleet.request(method.to_sym, path, body.to_json)
+    Onfleet.request(config, method.to_sym, path, body.to_json)
   end
 
-  def list(query_parameters)
+  def list(config, query_parameters)
     method = 'get'
     path = "tasks/all?#{query_parameters}"
 
-    Onfleet.request(method.to_sym, path)
+    Onfleet.request(config, method.to_sym, path)
   end
 
-  def get(id)
+  def get(config, id)
     method = 'get'
     path = "tasks/#{id}"
 
-    Onfleet.request(method.to_sym, path)
+    Onfleet.request(config, method.to_sym, path)
   end
 
-  def get_by_short_id(short_id)
+  def get_by_short_id(config, short_id)
     method = 'get'
     path = "tasks/shortId/#{short_id}"
 
-    Onfleet.request(method.to_sym, path)
+    Onfleet.request(config, method.to_sym, path)
   end
 
-  def update(id, body)
+  def update(config, id, body)
     method = 'put'
     path = "tasks/#{id}"
 
-    Onfleet.request(method.to_sym, path, body.to_json)
+    Onfleet.request(config, method.to_sym, path, body.to_json)
   end
 
   # ACTION: still needs to be tested
-  def complete(id, body)
+  def complete(config, id, body)
     method = 'post'
     path = "tasks/#{id}/complete"
 
-    Onfleet.request(method.to_sym, path, body.to_json)
+    Onfleet.request(config, method.to_sym, path, body.to_json)
   end
 
-  def clone(id, body)
+  def clone(config, id)
     method = 'post'
     path = "tasks/#{id}/clone"
 
-    Onfleet.request(method.to_sym, path, body.to_json)
+    Onfleet.request(config, method.to_sym, path)
   end
 
-  def delete(id)
+  def delete(config, id)
     method = 'delete'
     path = "tasks/#{id}"
 
-    Onfleet.request(method.to_sym, path)
+    Onfleet.request(config, method.to_sym, path)
   end
 
   # ACTION: still needs to be tested
-  def auto_assign(body)
+  def auto_assign(config, body)
     method = 'post'
     path = 'tasks/autoAssign'
 
-    Onfleet.request(method.to_sym, path, body.to_json)
+    Onfleet.request(config, method.to_sym, path, body.to_json)
   end
 end

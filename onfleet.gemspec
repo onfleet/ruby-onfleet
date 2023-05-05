@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-    s.name        = "hola"
+    s.name        = "Onfleet"
     s.version     = "0.0.0"
     s.summary     = "Onfleet's Ruby API wrapper package"
     s.description = "The Onfleet Ruby library provides convenient access to the Onfleet API."

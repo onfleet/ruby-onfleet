@@ -2,24 +2,24 @@ require_relative '../onfleet'
 
 # Destinations represent the location details for tasks, including exact coordinate and address information.
 class Destinations
-  def create(body)
+  def create(config, body)
     method = 'post'
     path = 'destinations'
 
-    Onfleet.request(method.to_sym, path, body.to_json)
+    Onfleet.request(config, method.to_sym, path, body.to_json)
   end
 
-  def get(id)
+  def get(config, id)
     method = 'get'
     path = "destinations/#{id}"
 
-    Onfleet.request(method.to_sym, path)
+    Onfleet.request(config, method.to_sym, path)
   end
 
-  def match_metadata(body)
+  def match_metadata(config, body)
     method = 'post'
     path = 'destinations/metadata'
 
-    Onfleet.request(method.to_sym, path, body.to_json)
+    Onfleet.request(config, method.to_sym, path, body.to_json)
   end
 end
