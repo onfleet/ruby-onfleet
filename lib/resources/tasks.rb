@@ -1,3 +1,5 @@
+require 'uri'
+
 require_relative '../onfleet'
 
 # Tasks represent units of work, defined by one destination and one recipient,
@@ -28,8 +30,12 @@ class Tasks
     Onfleet.request(config, method.to_sym, path, body.to_json)
   end
 
-  def list(config, query_parameters)
+  def list(config, query_parameters_hash)
     method = 'get'
+
+    # NOTE: parameters included here must be a hash object that is translated to URL query parameters
+    # The from parameter is the only required query parameter for this API call - must be formatted in Unix time.
+    query_parameters = URI.encode_www_form(query_parameters_hash)
     path = "tasks/all?#{query_parameters}"
 
     Onfleet.request(config, method.to_sym, path)

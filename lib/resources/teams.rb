@@ -1,3 +1,5 @@
+require 'uri'
+
 require_relative '../onfleet'
 
 # Teams are named entities that bring together administrators and workers belonging to the same organization.
@@ -43,10 +45,14 @@ class Teams
   end
 
   # ACTION: still needs to be tested
-  def driver_time_estimate(config, id, query_parameters)
+  def driver_time_estimate(config, id, query_parameters_hash = nil)
     method = 'get'
 
-    # NOTE: parameters included here must be in the format of the URL query parameters for a raw API call
+    # NOTE: parameters included here must be a hash object that is translated to URL query parameters
+    query_parameters = nil
+    if query_parameters_hash
+      query_parameters = URI.encode_www_form(query_parameters_hash)
+    end
     path = "teams/#{id}/estimate?#{query_parameters}"
 
     Onfleet.request(config, method.to_sym, path)

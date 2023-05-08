@@ -1,3 +1,5 @@
+require 'uri'
+
 require_relative '../onfleet'
 
 # Workers (also known as drivers in the dashboard) are the members of an organization 
@@ -10,10 +12,13 @@ class Workers
     Onfleet.request(config, method.to_sym, path, body.to_json)
   end
 
-  def get(config, id = nil, query_parameters = nil)
+  def get(config, id = nil, query_parameters_hash = nil)
     method = 'get'
 
-    # NOTE: parameters included here must be in the format of the URL query parameters for a raw API call
+    query_parameters = nil
+    if query_parameters_hash
+      query_parameters = URI.encode_www_form(query_parameters_hash)
+    end
     if id
       path = "workers/#{id}?#{query_parameters}"
     else
@@ -74,4 +79,3 @@ class Workers
     Onfleet.request(config, method.to_sym, path, body.to_json)
   end
 end
-
