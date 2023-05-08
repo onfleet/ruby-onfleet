@@ -6,5 +6,6 @@ gem 'rspec'
 gem 'webmock'
 gem 'ruby-debug-ide'
 gem 'debase'
+gem 'uri'
 
 gemspec
