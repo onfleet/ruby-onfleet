@@ -37,15 +37,12 @@ class Teams
   def auto_dispatch(config, id, body)
     method = 'post'
     path = "teams/#{id}/dispatch"
-    headers = {
-      'content-type': 'application/json'
-    }
 
-    Onfleet.request(config, method.to_sym, path, body.to_json, headers.to_json)
+    Onfleet.request(config, method.to_sym, path, body.to_json)
   end
 
   # ACTION: still needs to be tested
-  def driver_time_estimate(config, id, query_parameters_hash = nil)
+  def driver_time_estimate(config, worker_id, query_parameters_hash = nil)
     method = 'get'
 
     # NOTE: parameters included here must be a hash object that is translated to URL query parameters
@@ -53,7 +50,7 @@ class Teams
     if query_parameters_hash
       query_parameters = URI.encode_www_form(query_parameters_hash)
     end
-    path = "teams/#{id}/estimate?#{query_parameters}"
+    path = "teams/#{worker_id}/estimate?#{query_parameters}"
 
     Onfleet.request(config, method.to_sym, path)
   end

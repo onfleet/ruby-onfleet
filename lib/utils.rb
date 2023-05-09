@@ -1,6 +1,6 @@
 require 'faraday'
 
-module Onfleet
+class Onfleet
   def self.validate_authentication(base_url, api_key)
     body = nil
     headers = nil

@@ -57,14 +57,14 @@ class Workers
     Onfleet.request(config, method.to_sym, path)
   end
 
-  def get_worker_schedule(config, id)
+  def get_schedule(config, id)
     method = 'get'
     path = "workers/#{id}/schedule"
 
     Onfleet.request(config, method.to_sym, path)
   end
 
-  def set_worker_schedule(config, id, body)
+  def set_schedule(config, id, body)
     method = 'post'
     path = "workers/#{id}/schedule"
 

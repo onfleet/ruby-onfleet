@@ -1,4 +1,4 @@
-module Onfleet
+class Onfleet
   class ServiceError < StandardError
   end
 end

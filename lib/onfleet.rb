@@ -10,8 +10,8 @@ require_relative './errors/rate_limit_error'
 require_relative './errors/service_error'
 require_relative './errors/validation_error'
 
-# This class will allow you to configure the Onfleet Ruby API wrapper package
-class Configuration
+# This class allows you to configure and make direct API calls to the Onfleet platform using our Ruby API wrapper package
+class Onfleet
   attr_reader :default_timeout, :api_key, :base_url, :version, :name
 
   def initialize(api_key, base_url = nil)
@@ -19,24 +19,22 @@ class Configuration
     package_data = JSON.parse(file)
 
     @default_url = 'https://onfleet.com/api/v2'
+    # ACTION: need to figure out how to include API timeout parameter
     @default_timeout = 70000
     @api_key = api_key
     @base_url = base_url ? base_url : @default_url
     @version = package_data['version']
     @name = package_data['name']
-  end
-end
 
-# This module will allow you to make direct API calls to the Onfleet platform using our Ruby API wrapper package
-module Onfleet
+    @auth_validated = Onfleet.validate_authentication(@base_url, @api_key)
+  end
+
   def self.request(config, method, path, body = nil, headers = {})
     response = nil
     headers['Content-Type'] = 'application/json'
-    headers['User-Agent'] = "#{config.name}-#{config.version}"
+    headers['User-Agent'] = "#{self.name}-#{self.version}"
     request = Faraday.new
-    url = "#{config.base_url}/#{path}"
-
-    # validate_authentication(config.base_url, config.api_key)
+    url = "#{self.base_url}/#{path}"
 
     begin
       request.set_basic_auth(config.api_key, config.api_key)
