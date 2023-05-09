@@ -1,0 +1,31 @@
+{
+    "name": "@onfleet/ruby-onfleet",
+    "version": "1.0",
+    "description": "Onfleet's Ruby API wrapper package",
+    "main": "onfleet.rb",
+    "scripts": {
+
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/onfleet/ruby-onfleet.git"
+    },
+    "keywords": [
+        "ruby-onfleet"
+    ],
+    "author": "Dan Menza",
+    "contributors": [
+
+    ],
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/onfleet/ruby-onfleet/issues"
+    },
+    "homepage": "https://onfleet.com/",
+    "dependencies": {
+
+    },
+    "devDependencies": {
+
+    }
+}

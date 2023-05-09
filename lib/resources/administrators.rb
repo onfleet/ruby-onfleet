@@ -1,33 +1,32 @@
-require '../onfleet'
+require_relative '../onfleet'
 
+# Administrators are users who perform actions via the dashboard.
 class Administrators
-    class Administrators
-        def create(body)
-            method = "POST"
-            path = "admins"
-            
-            return onfleet.request(method, path, body)
-        end
+  def create(config, body)
+    method = 'post'
+    path = 'admins'
 
-        def list
-            method = "GET"
-            path = "admins"
+    Onfleet.request(config, method.to_sym, path, body.to_json)
+  end
 
-            return onfleet.request(method, path)
-        end
+  def list(config)
+    method = 'get'
+    path = 'admins'
 
-        def update(id, body)
-            method = "PUT"
-            path = "/admins/#{id}"
+    Onfleet.request(config, method.to_sym, path)
+  end
 
-            return onfleet.request(method, path, body)
-        end
+  def update(config, id, body)
+    method = 'put'
+    path = "admins/#{id}"
 
-        def delete(id)
-            method = "DELETE"
-            path = "/admins#{id}"
+    Onfleet.request(config, method.to_sym, path, body.to_json)
+  end
 
-            return onfleet.request(method, path)
-        end
-    end
+  def delete(config, id)
+    method = 'delete'
+    path = "admins/#{id}"
+
+    Onfleet.request(config, method.to_sym, path)
+  end
 end
