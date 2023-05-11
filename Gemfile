@@ -1,11 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'json'
 gem 'faraday'
+gem 'json'
 gem 'rspec'
-gem 'webmock'
-gem 'ruby-debug-ide'
-gem 'debase'
 gem 'uri'
+gem 'webmock'
 
 gemspec
