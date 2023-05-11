@@ -37,5 +37,13 @@ class Recipients
 
     Onfleet.request(config, method.to_sym, path)
   end
+
+  # ACTION: still needs to be tested
+  def match_metadata(config, body)
+    method = 'post'
+    path = 'recipients/metadata'
+
+    Onfleet.request(config, method.to_sym, path, body.to_json)
+  end
 end
 

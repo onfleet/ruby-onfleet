@@ -26,6 +26,13 @@ class Teams
     Onfleet.request(config, method.to_sym, path)
   end
 
+  def update(config, id, body)
+    method = 'put'
+    path = "teams/#{id}"
+
+    Onfleet.request(config, method.to_sym, path, body.to_json)
+  end
+
   def delete(config, id)
     method = 'delete'
     path = "teams/#{id}"
