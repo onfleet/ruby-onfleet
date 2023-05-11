@@ -78,4 +78,12 @@ class Workers
 
     Onfleet.request(config, method.to_sym, path, body.to_json)
   end
+
+  # ACTION: still needs to be tested
+  def match_metadata(config, body)
+    method = 'post'
+    path = 'workers/metadata'
+
+    Onfleet.request(config, method.to_sym, path, body.to_json)
+  end
 end

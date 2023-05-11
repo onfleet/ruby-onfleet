@@ -31,14 +31,16 @@ Creation and integration of API keys are performed through the [Onfleet dashboar
 
 To start utilizing the library, you simply need to create an `Onfleet` object with your API key:
 ```
-onfleet = Onfleet.new("YOUR_API_KEY")
+config = Onfleet.new("YOUR_API_KEY")
 ```
 
-An optional base_url can be included as a 2nd query parameter when initializing the Onfleet class if running testing in the sandbox environment - "https://staging.onfleet.com/api/v2". Otherwise, production will be the default.
+An optional `base_url` can be included as a 2nd query parameter when initializing the Onfleet class if running testing in the sandbox environment - "https://staging.onfleet.com/api/v2". Otherwise, production will be the default.
 
 ```
-onfleet = Onfleet.new("YOUR_API_KEY", "https://staging.onfleet.com/api/v2")
+config = Onfleet.new("YOUR_API_KEY", "https://staging.onfleet.com/api/v2")
 ```
+
+An `Onfleet config` instance will need to be passed as an argument to any subsequent API calls that will contain your configurations.
 
 ## Authentication
 Every API request to the Onfleet platform is authenticated using Basic Auth. On initialization of the `Onfleet` object, a test will be run to validate your API credentials from the following method:
@@ -66,15 +68,15 @@ Here are the operations available for each entity:
 |Entity|GET|POST|PUT|DELETE|
 |----|----|----|----|----|
 |administrators|list()|create()|update(id, body={})|delete(id)|
-|containers|get('workers', id), get('teams', id), get('organizations', id)|x|need to see we need to include here |x|
+|containers|get('workers', id), get('teams', id), get('organizations', id)|x|update_task(workerId, body={})|x|
 |destinations|get(id)|create(body={}), match_metadata(body={})|x|x|
 |hubs|list()|create(body={})|update(id, body={})|x|
 |organizations|get(delegateeId=nil)|x|insert_task(orgId, body={})|x|
-|recipients|get(id), get_by_name(name), get_by_phone(phone)|create(body={}) *need to check on match_metadata method here|update(id, body={})|x|
-|tasks|get(id), list(queryParameters={}), get_by_short_id(shortId)|create(body={}), batch_create(body={}), batch_create_async(body={}), complete(id, body={}), clone(id), auto_assign(body={}), *need to check on match_metadata|update(id, body={})|delete(id)|
-|teams|get(id), list(), driver_time_estimate(workerId, queryParameters={}), get_unassigned_tasks(id)|create(body={}), auto_dispatch(id, body={})|insert_task(teamId, body={}), *need to check on update|delete(id)|
+|recipients|get(id), get_by_name(name), get_by_phone(phone)|create(body={}), match_metadata(body={})|update(id, body={})|x|
+|tasks|get(id), list(queryParameters={}), get_by_short_id(shortId)|create(body={}), batch_create(body={}), batch_create_async(body={}), complete(id, body={}), clone(id), auto_assign(body={}), match_metadata(body={})|update(id, body={})|delete(id)|
+|teams|get(id), list(), driver_time_estimate(workerId, queryParameters={}), get_unassigned_tasks(id)|create(body={}), auto_dispatch(id, body={})|update(id, body={}), insert_task(teamId, body={})|delete(id)|
 |webhooks|list()|create(body={})|X|delete(id)|
-|workers|get(id=nil, queryParameters={}), get_tasks(id), get_by_location(longitude, latitude, radius), get_schedule(id)|create(body={}), set_schedule(id, body={}), *need to check on match_metadata|update(id, body={}), insert_task(id, body={})|delete(id)|
+|workers|get(id=nil, queryParameters={}), get_tasks(id), get_by_location(longitude, latitude, radius), get_schedule(id)|create(body={}), set_schedule(id, body={}), match_metadata(body={})|update(id, body={}), insert_task(id, body={})|delete(id)|
 
 ### **GET Requests**
 To get all the entity objects within an endpoint use `list`:
@@ -96,7 +98,7 @@ Optionally you can send a hash of query parameters for certain endpoints. The Ru
 tasks.list(config, queryParameters={'from': '1455072025000', 'state': '1, 2, 3'})
 ```
 
-To get one entity object within an endpoint, specify the an entity id:
+To get one entity object within an endpoint, specify the an `entity id`:
 
 ```
 # get examples with entityId lookup
@@ -104,7 +106,7 @@ tasks.get(config, 'taskId')
 recipients.get(config, 'workerId')
 ```
 
-Along with searching for an entity object with an associated id, the following query parameters are also available across a select group of endpoints:
+Along with searching for an entity object with an associated `id`, the following query parameters are also available across a select group of endpoints:
 
 * `queryParameters` (hash)
 * `name`
@@ -121,11 +123,11 @@ containers.get(config, 'teams', 'teamId')
 containers.get(config, 'organizations', 'organizationId')
 ```
 
-To get a driver by location, use the `getByLocation` method:
+To get a driver by location, use the `get_by_location` method:
 ```
 worker.get_by_location(config, 'longitude_value', 'latitude_value', 'radius_value')
 ```
-The radius value defaults to 1000 meters if not provided as an argument.
+The `radius` value defaults to 1000 meters if not provided as an argument.
 
 ### **POST Requests**
 To create an entity object within an endpoint:
@@ -152,7 +154,7 @@ body = {
 workers.create(config, body)
 ```
 
-Extended POST requests include clone, batch_create, auto_assign on the Tasks endpoint; set_schedule on the Workers endpoint; and auto_dispatch on the Teams endpoint. Examples of these endpoints are below:
+Extended POST requests include clone, batch_create, auto_assign on the tasks endpoint; set_schedule on the workers endpoint; and auto_dispatch on the teams endpoint. Examples of these endpoints are below:
 
 ```
 tasks.clone(config, 'id')
@@ -200,4 +202,13 @@ workers.delete(config, id)
 ```
 
 ## Errors
+The following types of errors can be thrown:
+1. HTTP errors
+2. permission errors
+3. rate limit errors
+4. service errors
+5. validation errors
+
+Currently only the `PermissionError`, `HttpError`, and `ServiceError` classes are in use depending on the API `status` returned from the Onfleet API. This package handles the API errors returned in the `handle_api_error` method in the `utils.rb` file.
+
 Go to [_top_](#ruby-onfleet).

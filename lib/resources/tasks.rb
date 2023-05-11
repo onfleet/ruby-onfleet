@@ -91,4 +91,12 @@ class Tasks
 
     Onfleet.request(config, method.to_sym, path, body.to_json)
   end
+
+  # ACTION: still needs to be tested
+  def match_metadata(config, body)
+    method = 'post'
+    path = 'tasks/metadata'
+
+    Onfleet.request(config, method.to_sym, path, body.to_json)
+  end
 end

@@ -11,4 +11,12 @@ class Containers
 
     Onfleet.request(config, method.to_sym, path)
   end
+
+  # This replacement method is only supported on the worker container type.
+  def update_task(config, worker_id, body)
+    method = 'put'
+    path = "containers/workers/#{worker_id}"
+
+    Onfleet.request(config, method.to_sym, path, body.to_json)
+  end
 end
