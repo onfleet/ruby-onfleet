@@ -22,11 +22,11 @@ RSpec.configure do |config|
   config.test_data = JSON.parse(file)
 
   config.add_setting :api_variables
-  config.api_variables = Configuration.new("API_KEY","BASE_URL")
+  config.api_variables = Onfleet::Configuration.new("f70dd381f0366c721677fb7e088b83bd","https://staging.onfleet.com/api/v2")
 end
 
 # Administrator entity tests
-describe Administrators do
+describe Onfleet::Administrators do
   it 'can create an administrator by calling POST /admins endpoint' do
     # request data
     config = RSpec.configuration.api_variables
@@ -44,7 +44,7 @@ describe Administrators do
       .with(basic_auth: [config.api_key, config.api_key], body: request_data.to_json, headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    administrator = Administrators.new
+    administrator = Onfleet::Administrators.new
     response = administrator.create(config, request_data)
 
     expect(response.status).to eq 200
@@ -68,7 +68,7 @@ describe Administrators do
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    administrator = Administrators.new
+    administrator = Onfleet::Administrators.new
     response = administrator.list(config)
 
     expect(response.status).to eq 200
@@ -92,7 +92,7 @@ describe Administrators do
       .with(basic_auth: [config.api_key, config.api_key], body: request_data.to_json, headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    administrator = Administrators.new
+    administrator = Onfleet::Administrators.new
     response = administrator.update(config, request_data['id'], request_data)
 
     expect(response.status).to eq 200
@@ -114,7 +114,7 @@ describe Administrators do
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200)
 
-    administrator = Administrators.new
+    administrator = Onfleet::Administrators.new
     response = administrator.delete(config, request_data['id'])
 
     expect(response.status).to eq 200
@@ -122,7 +122,7 @@ describe Administrators do
 end
 
 # Entity(organizations, teams or workers) container tests
-describe Containers do
+describe Onfleet::Containers do
   it 'can get an entities container by calling get /containers endpoint' do
     # request data
     config = RSpec.configuration.api_variables
@@ -140,17 +140,42 @@ describe Containers do
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    container = Containers.new
+    container = Onfleet::Containers.new
     response = container.get(config, request_data['entity'], request_data['id'])
 
     expect(response.status).to eq 200
     expect(response.body).to include('id')
     expect(response.body).to include('type')
   end
+
+  it 'can update a container\'s tasks by calling put /containers/workers endpoint' do
+    # request data
+    config = RSpec.configuration.api_variables
+    request_data = RSpec.configuration.test_data['containers']['update_tasks']['request']
+    path = "containers/workers"
+    method = 'put'
+    headers = {}
+    headers['Content-Type'] = 'application/json'
+    headers['User-Agent'] = '@onfleet/ruby-onfleet-1.0'
+
+    # response data
+    response_data = RSpec.configuration.test_data['containers']['update_tasks']['response']
+
+    stub_request(method.to_sym, "#{config.base_url}/#{path}/#{request_data['workerId']}")
+      .with(basic_auth: [config.api_key, config.api_key], body: request_data, headers: headers)
+      .to_return(status: 200, body: response_data.to_json)
+
+    container = Onfleet::Containers.new
+    response = container.update_tasks(config, request_data['workerId'], request_data)
+
+    expect(response.status).to eq 200
+    expect(response.body).to include('id')
+    expect(response.body).to include('timeLastModified')
+  end
 end
 
 # Destination entity tests
-describe Destinations do
+describe Onfleet::Destinations do
   it 'can create a destinations by calling POST /destinations endpoint' do
     # request data
     config = RSpec.configuration.api_variables
@@ -168,7 +193,7 @@ describe Destinations do
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    destination = Destinations.new
+    destination = Onfleet::Destinations.new
     response = destination.create(config, request_data)
 
     expect(response.status).to eq 200
@@ -193,7 +218,7 @@ describe Destinations do
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    destination = Destinations.new
+    destination = Onfleet::Destinations.new
     response = destination.get(config, request_data['id'])
 
     expect(response.status).to eq 200
@@ -218,7 +243,7 @@ describe Destinations do
       .with(basic_auth: [config.api_key, config.api_key], body: request_data, headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    destination = Destinations.new
+    destination = Onfleet::Destinations.new
     response = destination.match_metadata(config, request_data)
 
     expect(response.status).to eq 200
@@ -228,7 +253,7 @@ describe Destinations do
 end
 
 # Hub entity tests
-describe Hubs do
+describe Onfleet::Hubs do
   it 'can create a hub by calling POST /hubs endpoint' do
     # request data
     config = RSpec.configuration.api_variables
@@ -246,7 +271,7 @@ describe Hubs do
       .with(basic_auth: [config.api_key, config.api_key], body: request_data, headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    hub = Hubs.new
+    hub = Onfleet::Hubs.new
     response = hub.create(config, request_data)
 
     expect(response.status).to eq 200
@@ -270,7 +295,7 @@ describe Hubs do
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    hub = Hubs.new
+    hub = Onfleet::Hubs.new
     response = hub.list(config)
 
     expect(response.status).to eq 200
@@ -295,7 +320,7 @@ describe Hubs do
       .with(basic_auth: [config.api_key, config.api_key], body: request_data, headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    hub = Hubs.new
+    hub = Onfleet::Hubs.new
     response = hub.update(config, request_data['id'], request_data)
 
     expect(response.status).to eq 200
@@ -305,7 +330,7 @@ describe Hubs do
 end
 
 # Organization entity tests
-describe Organizations do
+describe Onfleet::Organizations do
   it 'can get an organization by calling GET /organizations endpoint' do
     # request data
     config = RSpec.configuration.api_variables
@@ -323,7 +348,7 @@ describe Organizations do
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    organization = Organizations.new
+    organization = Onfleet::Organizations.new
     response = organization.get(config, request_data['id'])
 
     expect(response.status).to eq 200
@@ -332,7 +357,7 @@ describe Organizations do
 end
 
 # Recipients entity tests
-describe Recipients do
+describe Onfleet::Recipients do
   it 'can create a recipient by calling POST /recipients endpoint' do
     # request data
     config = RSpec.configuration.api_variables
@@ -350,7 +375,7 @@ describe Recipients do
       .with(basic_auth: [config.api_key, config.api_key], body: request_data, headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    recipient = Recipients.new
+    recipient = Onfleet::Recipients.new
     response = recipient.create(config, request_data)
 
     expect(response.status).to eq 200
@@ -375,7 +400,7 @@ describe Recipients do
       .with(basic_auth: [config.api_key, config.api_key], body: request_data, headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    recipient = Recipients.new
+    recipient = Onfleet::Recipients.new
     response = recipient.update(config, request_data['id'], request_data)
 
     expect(response.status).to eq 200
@@ -400,7 +425,7 @@ describe Recipients do
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    recipient = Recipients.new
+    recipient = Onfleet::Recipients.new
     response = recipient.get(config, request_data['id'])
 
     expect(response.status).to eq 200
@@ -424,7 +449,7 @@ describe Recipients do
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    recipient = Recipients.new
+    recipient = Onfleet::Recipients.new
     response = recipient.get_by_name(config, request_data['name'])
 
     expect(response.status).to eq 200
@@ -448,7 +473,7 @@ describe Recipients do
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    recipient = Recipients.new
+    recipient = Onfleet::Recipients.new
     response = recipient.get_by_phone(config, request_data['phone'])
 
     expect(response.status).to eq 200
@@ -457,7 +482,7 @@ describe Recipients do
 end
 
 # Tasks entity tests
-describe Tasks do
+describe Onfleet::Tasks do
   it 'can create a task by calling POST /tasks endpoint' do
     # request data
     config = RSpec.configuration.api_variables
@@ -475,7 +500,7 @@ describe Tasks do
       .with(basic_auth: [config.api_key, config.api_key], body: request_data, headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    task = Tasks.new
+    task = Onfleet::Tasks.new
     response = task.create(config, request_data)
 
     expect(response.status).to eq 200
@@ -496,12 +521,13 @@ describe Tasks do
     # response data
     response_data = RSpec.configuration.test_data['tasks']['list']['response']
 
-    stub_request(method.to_sym, "#{config.base_url}/#{path}/all?#{request_data['from']}")
+    # hardcoded from query parameter as URI.encode_www_form() method is transforming the query_parameters_hash
+    stub_request(method.to_sym, "#{config.base_url}/#{path}/all?from=1455072025000")
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    task = Tasks.new
-    response = task.list(config, request_data['from'])
+    task = Onfleet::Tasks.new
+    response = task.list(config, request_data['query_parameters_hash'])
 
     expect(response.status).to eq 200
     expect(response.body).to include('id')
@@ -525,7 +551,7 @@ describe Tasks do
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    task = Tasks.new
+    task = Onfleet::Tasks.new
     response = task.get(config, request_data['id'])
 
     expect(response.status).to eq 200
@@ -550,7 +576,7 @@ describe Tasks do
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    task = Tasks.new
+    task = Onfleet::Tasks.new
     response = task.get_by_short_id(config, request_data['shortId'])
 
     expect(response.status).to eq 200
@@ -575,7 +601,7 @@ describe Tasks do
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    task = Tasks.new
+    task = Onfleet::Tasks.new
     response = task.clone(config, request_data['id'])
 
     expect(response.status).to eq 200
@@ -600,7 +626,7 @@ describe Tasks do
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    task = Tasks.new
+    task = Onfleet::Tasks.new
     response = task.delete(config, request_data['id'])
 
     expect(response.status).to eq 200
@@ -608,7 +634,7 @@ describe Tasks do
 end
 
 # Teams entity tests
-describe Teams do
+describe Onfleet::Teams do
   it 'can create a team by calling POST /teams endpoint' do
     # request data
     config = RSpec.configuration.api_variables
@@ -626,7 +652,7 @@ describe Teams do
       .with(basic_auth: [config.api_key, config.api_key], body: request_data, headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    team = Teams.new
+    team = Onfleet::Teams.new
     response = team.create(config, request_data)
 
     expect(response.status).to eq 200
@@ -650,7 +676,7 @@ describe Teams do
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    team = Teams.new
+    team = Onfleet::Teams.new
     response = team.list(config)
 
     expect(response.status).to eq 200
@@ -675,12 +701,37 @@ describe Teams do
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    team = Teams.new
+    team = Onfleet::Teams.new
     response = team.get(config, request_data['id'])
 
     expect(response.status).to eq 200
     expect(response.body).to include('id')
     expect(response.body).to include('managers')
+  end
+
+  it 'can update a team by calling PUT /teams endpoint' do
+    # request data
+    config = RSpec.configuration.api_variables
+    request_data = RSpec.configuration.test_data['teams']['update']['request']
+    path = 'teams'
+    method = 'put'
+    headers = {}
+    headers['Content-Type'] = 'application/json'
+    headers['User-Agent'] = '@onfleet/ruby-onfleet-1.0'
+
+    # response data
+    response_data = RSpec.configuration.test_data['teams']['update']['response']
+
+    stub_request(method.to_sym, "#{config.base_url}/#{path}/#{request_data['id']}")
+      .with(basic_auth: [config.api_key, config.api_key], body: request_data, headers: headers)
+      .to_return(status: 200, body: response_data.to_json)
+
+    team = Onfleet::Teams.new
+    response = team.update(config, request_data['id'], request_data)
+
+    expect(response.status).to eq 200
+    expect(response.body).to include('id')
+    expect(response.body).to include('timeLastModified')
   end
 
   it 'can delete a team when calling DELETE /teams endpoint' do
@@ -700,7 +751,7 @@ describe Teams do
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    team = Teams.new
+    team = Onfleet::Teams.new
     response = team.delete(config, request_data['id'])
 
     expect(response.status).to eq 200
@@ -708,7 +759,7 @@ describe Teams do
 end
 
 # Webhook tests
-describe Webhooks do
+describe Onfleet::Webhooks do
   it 'can create a webhook by calling POST /webhooks endpoint' do
     # request data
     config = RSpec.configuration.api_variables
@@ -726,7 +777,7 @@ describe Webhooks do
       .with(basic_auth: [config.api_key, config.api_key], body: request_data, headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    webhook = Webhooks.new
+    webhook = Onfleet::Webhooks.new
     response = webhook.create(config, request_data)
 
     expect(response.status).to eq 200
@@ -750,7 +801,7 @@ describe Webhooks do
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    webhook = Webhooks.new
+    webhook = Onfleet::Webhooks.new
     response = webhook.list(config)
 
     expect(response.status).to eq 200
@@ -775,7 +826,7 @@ describe Webhooks do
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    webhook = Webhooks.new
+    webhook = Onfleet::Webhooks.new
     response = webhook.delete(config, request_data['id'])
 
     expect(response.status).to eq 200
@@ -783,7 +834,7 @@ describe Webhooks do
 end
 
 # Workers entity tests
-describe Workers do
+describe Onfleet::Workers do
   it 'can create a worker by calling POST /workers endpoint' do
     # request data
     config = RSpec.configuration.api_variables
@@ -801,7 +852,7 @@ describe Workers do
       .with(basic_auth: [config.api_key, config.api_key], body: request_data, headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    worker = Workers.new
+    worker = Onfleet::Workers.new
     response = worker.create(config, request_data)
 
     expect(response.status).to eq 200
@@ -826,7 +877,7 @@ describe Workers do
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    worker = Workers.new
+    worker = Onfleet::Workers.new
     response = worker.get(config, request_data['id'])
 
     expect(response.status).to eq 200
@@ -851,7 +902,7 @@ describe Workers do
       .with(basic_auth: [config.api_key, config.api_key], body: request_data, headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    worker = Workers.new
+    worker = Onfleet::Workers.new
     response = worker.update(config, request_data['id'], request_data)
 
     expect(response.status).to eq 200
@@ -876,7 +927,7 @@ describe Workers do
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    worker = Workers.new
+    worker = Onfleet::Workers.new
     response = worker.delete(config, request_data['id'])
 
     expect(response.status).to eq 200
@@ -899,7 +950,7 @@ describe Workers do
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    worker = Workers.new
+    worker = Onfleet::Workers.new
     response = worker.get_tasks(config, request_data['id'])
 
     expect(response.status).to eq 200
@@ -909,7 +960,7 @@ describe Workers do
   it 'can get a worker\'s schedule by calling GET /workers/workerId/schedule endpoint' do
     # request data
     config = RSpec.configuration.api_variables
-    request_data = RSpec.configuration.test_data['workers']['get_worker_schedule']['request']
+    request_data = RSpec.configuration.test_data['workers']['get_schedule']['request']
     path = "workers/#{request_data['id']}/schedule"
     method = 'get'
     headers = {}
@@ -917,14 +968,14 @@ describe Workers do
     headers['User-Agent'] = '@onfleet/ruby-onfleet-1.0'
 
     # response data
-    response_data = RSpec.configuration.test_data['workers']['get_worker_schedule']['response']
+    response_data = RSpec.configuration.test_data['workers']['get_schedule']['response']
 
     stub_request(method.to_sym, "#{config.base_url}/#{path}")
       .with(basic_auth: [config.api_key, config.api_key], headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    worker = Workers.new
-    response = worker.get_worker_schedule(config, request_data['id'])
+    worker = Onfleet::Workers.new
+    response = worker.get_schedule(config, request_data['id'])
 
     expect(response.status).to eq 200
     expect(response.body).to include('entries')
@@ -933,7 +984,7 @@ describe Workers do
   it 'can set a worker\'s schedule by calling POST /workers/workerId/schedule endpoint' do
     # request data
     config = RSpec.configuration.api_variables
-    request_data = RSpec.configuration.test_data['workers']['set_worker_schedule']['request']
+    request_data = RSpec.configuration.test_data['workers']['set_schedule']['request']
     path = "workers/#{request_data['id']}/schedule"
     method = 'post'
     headers = {}
@@ -941,14 +992,14 @@ describe Workers do
     headers['User-Agent'] = '@onfleet/ruby-onfleet-1.0'
 
     # response data
-    response_data = RSpec.configuration.test_data['workers']['set_worker_schedule']['response']
+    response_data = RSpec.configuration.test_data['workers']['set_schedule']['response']
 
     stub_request(method.to_sym, "#{config.base_url}/#{path}")
       .with(basic_auth: [config.api_key, config.api_key], body: request_data, headers: headers)
       .to_return(status: 200, body: response_data.to_json)
 
-    worker = Workers.new
-    response = worker.set_worker_schedule(config, request_data['id'], request_data)
+    worker = Onfleet::Workers.new
+    response = worker.set_schedule(config, request_data['id'], request_data)
 
     expect(response.status).to eq 200
     expect(response.body).to include('entries')

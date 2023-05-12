@@ -1,6 +1,23 @@
 require 'faraday'
 
-class Onfleet
+module Onfleet
+  def self.request(config, method, path, body = nil, headers = {})
+    response = nil
+    headers['Content-Type'] = 'application/json'
+    headers['User-Agent'] = "#{config.name}-#{config.version}"
+    request = Faraday.new
+    url = "#{config.base_url}/#{path}"
+
+    begin
+      request.set_basic_auth(config.api_key, config.api_key)
+      response = request.run_request(method, url, body, headers)
+      handle_api_error(response)
+    rescue Faraday::Response::RaiseError => e
+      raise HttpError, "Received the following error when making HTTP request: #{e}"
+    end
+    response
+  end
+
   def self.validate_authentication(base_url, api_key)
     body = nil
     headers = nil

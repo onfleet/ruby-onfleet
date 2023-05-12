@@ -1,4 +1,4 @@
-class Onfleet
+module Onfleet
   class PermissionError < StandardError
   end
 end
