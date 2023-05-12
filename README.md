@@ -29,15 +29,15 @@ Before using the API wrapper, you will need to obtain an API key from one of you
 
 Creation and integration of API keys are performed through the [Onfleet dashboard](https://onfleet.com/dashboard#/manage).
 
-To start utilizing the library, you simply need to create an `Onfleet` object with your API key:
+To start utilizing the library, you simply need to create an `Onfleet` object and set your `Configuration` with your API key:
 ```
-config = Onfleet.new("YOUR_API_KEY")
+config = Onfleet::Configuration.new("YOUR_API_KEY")
 ```
 
-An optional `base_url` can be included as a 2nd query parameter when initializing the Onfleet class if running testing in the sandbox environment - "https://staging.onfleet.com/api/v2". Otherwise, production will be the default.
+An optional `base_url` can be included as a 2nd query parameter when initializing the Onfleet module if running testing in the sandbox environment - "https://staging.onfleet.com/api/v2". Otherwise, production will be the default.
 
 ```
-config = Onfleet.new("YOUR_API_KEY", "https://staging.onfleet.com/api/v2")
+config = Onfleet::Configuration.new("YOUR_API_KEY", "https://staging.onfleet.com/api/v2")
 ```
 
 An `Onfleet config` instance will need to be passed as an argument to any subsequent API calls that will contain your configurations.
@@ -52,7 +52,7 @@ Onfleet.validate_authentication(@base_url, @api_key)
 If successful, this variable will be set with your `Onfleet` instance:
 
 ```
-onfleet_instance.auth_validated = true
+onfleet.auth_validated = true
 ```
 
 Otherwise, an error will be raised or this value would equal `false` if unsuccessful.
@@ -68,7 +68,7 @@ Here are the operations available for each entity:
 |Entity|GET|POST|PUT|DELETE|
 |----|----|----|----|----|
 |administrators|list()|create()|update(id, body={})|delete(id)|
-|containers|get('workers', id), get('teams', id), get('organizations', id)|x|update_task(workerId, body={})|x|
+|containers|get('workers', id), get('teams', id), get('organizations', id)|x|update_tasks(workerId, body={})|x|
 |destinations|get(id)|create(body={}), match_metadata(body={})|x|x|
 |hubs|list()|create(body={})|update(id, body={})|x|
 |organizations|get(delegateeId=nil)|x|insert_task(orgId, body={})|x|
@@ -88,6 +88,7 @@ list()
 Examples of `list()`:
 
 ```
+tasks = Onfleet::Tasks.new
 tasks.list(config)
 tasks.list(config, queryParameters{})
 ```
@@ -95,6 +96,7 @@ tasks.list(config, queryParameters{})
 Optionally you can send a hash of query parameters for certain endpoints. The Ruby hash will be encoded to url query parameters using the `uri` gem. to Refer back to [API documentation](https://docs.onfleet.com/) for endpoints that support query parameters.
 
 ```
+tasks = Onfleet::Tasks.new
 tasks.list(config, queryParameters={'from': '1455072025000', 'state': '1, 2, 3'})
 ```
 
@@ -102,7 +104,10 @@ To get one entity object within an endpoint, specify the an `entity id`:
 
 ```
 # get examples with entityId lookup
+tasks = Onfleet::Tasks.new
 tasks.get(config, 'taskId')
+
+recipients = Onfleet::Recipients.new
 recipients.get(config, 'workerId')
 ```
 
@@ -116,8 +121,10 @@ Along with searching for an entity object with an associated `id`, the following
 
 ```
 # get examples with additional arguments
+workers = Onfleet::Workers.new
 workers.get(config, 'workerId', queryParameters={'analytics': 'true'})
 
+containers = Onfleet::Containers.new
 containers.get(config, 'workers', 'workerId')
 containers.get(config, 'teams', 'teamId')
 containers.get(config, 'organizations', 'organizationId')
@@ -125,6 +132,7 @@ containers.get(config, 'organizations', 'organizationId')
 
 To get a driver by location, use the `get_by_location` method:
 ```
+workers = Onfleet::Workers.new
 worker.get_by_location(config, 'longitude_value', 'latitude_value', 'radius_value')
 ```
 The `radius` value defaults to 1000 meters if not provided as an argument.
@@ -151,18 +159,22 @@ body = {
   }
 }
 
+workers = Onfleet::Workers.new
 workers.create(config, body)
 ```
 
 Extended POST requests include clone, batch_create, auto_assign on the tasks endpoint; set_schedule on the workers endpoint; and auto_dispatch on the teams endpoint. Examples of these endpoints are below:
 
 ```
+tasks = Onfleet::Tasks.new
 tasks.clone(config, 'id')
 tasks.batch_create(config, body)
 tasks.auto_assign(config, body)
 
+workers = Onfleet::Workers.new
 workers.set_schedule(config, 'id', body)
 
+teams = Onfleet::Teams.new
 teams.auto_dispatch(config, 'id', body)
 ```
 
@@ -182,11 +194,13 @@ body = {
   ]
 }
 
+workers = Onfleet::Workers.new
 workers.update(config, 'workerId', body)
 ```
 
 Examples of `insert_task()`:
 ```
+workers = Onfleet::Workers.new
 workers.insert_task(config, 'taskId', body)
 ```
 
@@ -198,6 +212,7 @@ To delete an entity object within an endpoint:
 
 Examples of `delete()`:
 ```
+workers = Onfleet::Workers.new
 workers.delete(config, id)
 ```
 
