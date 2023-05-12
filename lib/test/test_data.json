@@ -98,6 +98,30 @@
 
                 ]
             }
+        },
+        "update_tasks": {
+            "request": {
+                "workerId": "2Fwp6wS5wLNjDn36r1LJPscA",
+                "tasks": [
+                    "b3F~z2sU7H*auNKkM6LoiXzP",
+                    "1ry863mrjoQaqMNxnrD5YvxH",
+                    "l33lg5WLrja3Tft*MO383Gub"
+                ]
+            },
+            "response": {
+                "id": "NngUFbKT95Hly0PkFwPui*kg",
+                "timeCreated": 1518563775000,
+                "timeLastModified": 1518563775468,
+                "organization": "yAM*fDkztrT3gUcz9mNDgNOL",
+                "type": "WORKER",
+                "activeTask": null,
+                "tasks": [
+                    "b3F~z2sU7H*auNKkM6LoiXzP",
+                    "1ry863mrjoQaqMNxnrD5YvxH",
+                    "l33lg5WLrja3Tft*MO383Gub"
+                ],
+                "worker": "2Fwp6wS5wLNjDn36r1LJPscA"
+            }
         }
     },
     "destinations": {
@@ -604,7 +628,9 @@
         },
         "list": {
             "request": {
-                "from": "from=1455072025000"
+                "query_parameters_hash": {
+                    "from": "1455072025000"
+                }
             },
             "response": {
                 "tasks": [{
@@ -1553,6 +1579,30 @@
                 ]
             }
         },
+        "update": {
+            "request": {
+                "workers": [
+                    "1LjhGUWdxFbvdsTAAXs0TFos",
+                    "F8WPCqGmQYWpCkQ2c8zJTCpW",
+                    "3joS0Jh19VpJZgSTxFOK9fTf"
+                ]
+            },
+            "response": {
+                "id": "FFqPs1KHayxorfA~~xIj0us4",
+                "timeCreated": 1455156655000,
+                "timeLastModified": 1455156656399,
+                "name": "Sunset",
+                "workers": [
+                    "1LjhGUWdxFbvdsTAAXs0TFos",
+                    "F8WPCqGmQYWpCkQ2c8zJTCpW",
+                    "3joS0Jh19VpJZgSTxFOK9fTf"
+                ],
+                "managers": [
+                    "Mrq7aKqzPFKX22pmjdLx*ohM"
+                ],
+                "hub": "tKxSfU7psqDQEBVn5e2VQ~*O"
+            }
+        },
         "delete": {
             "request": {
                 "id": "MVVv1216WJeyhTIJtHBOSM*R"
@@ -1871,7 +1921,7 @@
                 }]
             }
         },
-        "get_worker_schedule": {
+        "get_schedule": {
             "request": {
                 "id": "*a9jouIFuEodzIGsTKWV12qM"
             },
@@ -1894,7 +1944,7 @@
                 ]
             }
         },
-        "set_worker_schedule": {
+        "set_schedule": {
             "request": {
                 "entries": [{
                         "date": "2017-07-16",
