@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'ruby-onfleet'
-  s.version     = '1.0.0'
+  s.version     = '1.0.1'
   s.date        = '2023-05-11'
   s.summary     = 'Onfleet Ruby API wrapper package'
   s.description = 'The Onfleet Ruby library provides convenient access to the Onfleet API.'

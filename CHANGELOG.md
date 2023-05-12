@@ -7,3 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [1.0.0](https://github.com/onfleet/ruby-onfleet/releases/tag/v1.0.0) - 2023-05-11
 Added
 * Initial release on RubyGems
+
+## [1.0.1](https://github.com/onfleet/ruby-onfleet/releases/tag/v1.0.1) - 2023-05-12
+Added
+* Refactored resources for module/class inheritance
