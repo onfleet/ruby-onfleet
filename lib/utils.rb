@@ -1,16 +1,21 @@
 require 'faraday'
+require 'faraday-rate_limiter'
 
 module Onfleet
-  def self.request(config, method, path, body = nil, headers = {})
+  def self.request(config, method, path, body = nil)
     response = nil
-    headers['Content-Type'] = 'application/json'
-    headers['User-Agent'] = "#{config.name}-#{config.version}"
-    request = Faraday.new
     url = "#{config.base_url}/#{path}"
+
+    # throttling configuration to match rate limiting enforced by the API
+    request = Faraday.new do |r|
+      # allow up to 20 API requests per second
+      r.request :rate_limiter, interval: 0.05
+      r.adapter :net_http
+    end
 
     begin
       request.set_basic_auth(config.api_key, config.api_key)
-      response = request.run_request(method, url, body, headers)
+      response = request.run_request(method, url, body, config.headers)
       handle_api_error(response)
     rescue Faraday::Response::RaiseError => e
       raise HttpError, "Received the following error when making HTTP request: #{e}"
