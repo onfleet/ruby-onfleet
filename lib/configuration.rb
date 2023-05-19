@@ -2,9 +2,9 @@ require 'json'
 
 module Onfleet
   class Configuration
-    attr_reader :default_timeout, :api_key, :base_url, :version, :name
+    attr_reader :default_timeout, :api_key, :base_url, :headers, :version, :name
 
-    def initialize(api_key, base_url = nil)
+    def initialize(api_key, base_url = nil, headers = {})
       file = File.read('/Users/danmenza/onfleet/code/api_wrappers/ruby-onfleet/package.json')
       package_data = JSON.parse(file)
 
@@ -16,6 +16,11 @@ module Onfleet
       @base_url = base_url ? base_url : @default_url
       @version = package_data['version']
       @name = package_data['name']
+
+      # Default headers included in all API requests
+      headers['Content-Type'] = 'application/json'
+      headers['User-Agent'] = "#{@name}-#{@version}"
+      @headers = headers
 
       @auth_validated = Onfleet.validate_authentication(@base_url, @api_key)
     end

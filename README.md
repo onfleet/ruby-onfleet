@@ -1,4 +1,8 @@
 # ruby-onfleet
+
+> *Consulta este documento en otro idioma*:  
+> [Español](https://github.com/onfleet/ruby-onfleet/blob/master/README.es.md)  
+
 Visit our blog post on the [API wrapper project](https://onfleet.com/blog/api-wrappers-explained/) to learn more about our initiatives. If you have any questions, please reach us by submitting an issue [here](https://github.com/onfleet/ruby-onfleet/issues) or contact support@onfleet.com.
 
 ## Table of Contents
@@ -31,13 +35,20 @@ Creation and integration of API keys are performed through the [Onfleet dashboar
 
 To start utilizing the library, you simply need to create an `Onfleet` object and set your `Configuration` with your API key:
 ```
-config = Onfleet::Configuration.new("YOUR_API_KEY")
+config = Onfleet::Configuration.new("API_KEY")
 ```
 
-An optional `base_url` can be included as a 2nd query parameter when initializing the Onfleet module if running testing in the sandbox environment - "https://staging.onfleet.com/api/v2". Otherwise, production will be the default.
+Two optional parameters can be included when initializing the Onfleet module - `base_url` and `headers`. 
+If you are running testing in the sandbox environment, the following `base_url` should be defined - "https://staging.onfleet.com/api/v2". Otherwise, production will be the default.
+
+The required default headers are set on your configuration initialization. We also recommend including the following custom header to help us identify source traffic:
 
 ```
-config = Onfleet::Configuration.new("YOUR_API_KEY", "https://staging.onfleet.com/api/v2")
+headers = {
+  "X-Onfleet-Organization": "ORGANIZATION_NAME-onfleet"
+}
+
+config = Onfleet::Configuration.new("API_KEY", "https://staging.onfleet.com/api/v2", headers)
 ```
 
 An `Onfleet config` instance will need to be passed as an argument to any subsequent API calls that will contain your configurations.
@@ -65,18 +76,18 @@ We have also implemented a limiter on this library to avoid you from unintention
 ## Supported CRUD Operations
 Here are the operations available for each entity:
 
-|Entity|GET|POST|PUT|DELETE|
-|----|----|----|----|----|
-|administrators|list()|create()|update(id, body={})|delete(id)|
-|containers|get('workers', id), get('teams', id), get('organizations', id)|x|update_tasks(workerId, body={})|x|
-|destinations|get(id)|create(body={}), match_metadata(body={})|x|x|
-|hubs|list()|create(body={})|update(id, body={})|x|
-|organizations|get(delegateeId=nil)|x|insert_task(orgId, body={})|x|
-|recipients|get(id), get_by_name(name), get_by_phone(phone)|create(body={}), match_metadata(body={})|update(id, body={})|x|
-|tasks|get(id), list(queryParameters={}), get_by_short_id(shortId)|create(body={}), batch_create(body={}), batch_create_async(body={}), complete(id, body={}), clone(id), auto_assign(body={}), match_metadata(body={})|update(id, body={})|delete(id)|
-|teams|get(id), list(), driver_time_estimate(workerId, queryParameters={}), get_unassigned_tasks(id)|create(body={}), auto_dispatch(id, body={})|update(id, body={}), insert_task(teamId, body={})|delete(id)|
-|webhooks|list()|create(body={})|X|delete(id)|
-|workers|get(id=nil, queryParameters={}), get_tasks(id), get_by_location(longitude, latitude, radius), get_schedule(id)|create(body={}), set_schedule(id, body={}), match_metadata(body={})|update(id, body={}), insert_task(id, body={})|delete(id)|
+| Entity | GET | POST | PUT | DELETE |
+| :-: | :-: | :-: | :-: | :-: |
+|[administrators](https://docs.onfleet.com/reference/administrators)|list()|create()|update(id, body={})|delete(id)|
+|[containers](https://docs.onfleet.com/reference/containers)|get('workers', id)<br />get('teams', id)<br />get('organizations', id)|x|update_tasks(workerId, body={})|x|
+|[destinations](https://docs.onfleet.com/reference/destinations)|get(id)|create(body={})<br />match_metadata(body={})|x|x|
+|[hubs](https://docs.onfleet.com/reference/hubs)|list()|create(body={})|update(id, body={})|x|
+|[organizations](https://docs.onfleet.com/reference/organizations)|get(delegateeId=nil)|x|insert_task(orgId, body={})|x|
+|[recipients](https://docs.onfleet.com/reference/recipients)|get(id)<br />get_by_name(name)<br />get_by_phone(phone)|create(body={})<br />match_metadata(body={})|update(id, body={})|x|
+|[tasks](https://docs.onfleet.com/reference/tasks)|get(id)<br />list(queryParameters={})<br />get_by_short_id(shortId)|create(body={})<br />batch_create(body={})<br />batch_create_async(body={})<br />complete(id, body={})<br />clone(id)<br />auto_assign(body={})<br />match_metadata(body={})|update(id, body={})|delete(id)|
+|[teams](https://docs.onfleet.com/reference/teams)|get(id)<br />list()<br />driver_time_estimate(workerId, queryParameters={})<br />get_unassigned_tasks(id)|create(body={})<br />auto_dispatch(id, body={})|update(id, body={})<br />insert_task(teamId, body={})|delete(id)|
+|[webhooks](https://docs.onfleet.com/reference/webhooks)|list()|create(body={})|X|delete(id)|
+|[workers](https://docs.onfleet.com/reference/workers)|get(id=nil, queryParameters={})<br />get_tasks(id)<br />get_by_location(longitude, latitude, radius)<br />get_schedule(id)|create(body={})<br />set_schedule(id, body={})<br />match_metadata(body={})|update(id, body={})<br />insert_task(id, body={})|delete(id)|
 
 ### **GET Requests**
 To get all the entity objects within an endpoint use `list`:
@@ -93,7 +104,7 @@ tasks.list(config)
 tasks.list(config, queryParameters{})
 ```
 
-Optionally you can send a hash of query parameters for certain endpoints. The Ruby hash will be encoded to url query parameters using the `uri` gem. to Refer back to [API documentation](https://docs.onfleet.com/) for endpoints that support query parameters.
+Optionally you can send a hash of query parameters for certain endpoints. The Ruby hash will be encoded to url query parameters using the `uri` gem. Refer back to [API documentation](https://docs.onfleet.com/) for endpoints that support query parameters.
 
 ```
 tasks = Onfleet::Tasks.new

@@ -11,3 +11,9 @@ Added
 ## [1.0.1](https://github.com/onfleet/ruby-onfleet/releases/tag/v1.0.1) - 2023-05-12
 Added
 * Refactored resources for module/class inheritance
+
+## [1.0.2](https://github.com/onfleet/ruby-onfleet/releases/tag/v1.0.2) - 2023-05-19
+Added
+* Added README support for spanish
+* Included throttling constraints for 20 API requests per second using faraday-rate_limiter
+* Updated headers on initialization to allow for custom headers
