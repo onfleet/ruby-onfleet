@@ -1,7 +1,7 @@
 # ruby-onfleet
 
 > *Consulta este documento en otro idioma*:  
-> [Español](https://github.com/onfleet/ruby-onfleet/blob/master/README.es.md)  
+> [Español](https://github.com/onfleet/ruby-onfleet/blob/main/README.es.md)  
 
 Visit our blog post on the [API wrapper project](https://onfleet.com/blog/api-wrappers-explained/) to learn more about our initiatives. If you have any questions, please reach us by submitting an issue [here](https://github.com/onfleet/ruby-onfleet/issues) or contact support@onfleet.com.
 

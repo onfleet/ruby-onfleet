@@ -1,7 +1,7 @@
 # Onfleet Ruby Wrapper
 
 > *Consulta este documento en otro idioma*:  
-> [English](https://github.com/onfleet/ruby-onfleet/blob/master/README.md)  
+> [English](https://github.com/onfleet/ruby-onfleet/blob/main/README.md)  
 
 Los invitamos a visitar nuestra publicación sobre el [proyecto de librerías para la API](https://onfleet.com/blog/api-wrappers-explained/) para conocer más sobre nuestras iniciativas.  
 En caso de preguntas, pueden contactarnos a través de un issue [aquí](https://github.com/onfleet/pyonfleet/issues) o escribirnos a support@onfleet.com.
@@ -68,7 +68,7 @@ Si tiene éxito, esta variable se establecerá con su instancia `Onfleet`:
 onfleet.auth_validated = true
 ```
 
-De lo contrario, se generará un error o este valor será igual a `falso` si no se realiza correctamente.
+De lo contrario, se generará un error o este valor será igual a `false` si no se realiza correctamente.
 
 ### Límites
 La API impone un límite de 20 peticiones por segundo entre todas las peticiones de todas las llaves de la organización. Más detalles [aquí](https://docs.onfleet.com/reference/throttling).
@@ -78,7 +78,7 @@ La librería también implementa un limitador para prevenir excesos accidentales
 ### Operaciones CRUD soportadas
 Estas son las operaciones disponibles para cada endpoint:
 
-| Entity | GET | POST | PUT | DELETE |
+| Entidad | GET | POST | PUT | DELETE |
 | :-: | :-: | :-: | :-: | :-: |
 |[administrators](https://docs.onfleet.com/reference/administrators)|list()|create()|update(id, body={})|delete(id)|
 |[containers](https://docs.onfleet.com/reference/containers)|get('workers', id)<br />get('teams', id)<br />get('organizations', id)|x|update_tasks(workerId, body={})|x|
@@ -92,13 +92,13 @@ Estas son las operaciones disponibles para cada endpoint:
 |[workers](https://docs.onfleet.com/reference/workers)|get(id=nil, queryParameters={})<br />get_tasks(id)<br />get_by_location(longitude, latitude, radius)<br />get_schedule(id)|create(body={})<br />set_schedule(id, body={})<br />match_metadata(body={})|update(id, body={})<br />insert_task(id, body={})|delete(id)|
 
 ### **Peticiones GET**
-Para obtener todos los objetos de entidad dentro de un punto final, use `list`:
+Para obtener todos los objetos de entidad dentro de un endpoint, use `list`:
 
 ```
 list()
 ```
 
-Examples of `list()`:
+Ejemplos de `list()`:
 
 ```
 tasks = Onfleet::Tasks.new
@@ -106,14 +106,14 @@ tasks.list(config)
 tasks.list(config, queryParameters{})
 ```
 
-Opcionalmente, puede enviar un hash de parámetros de consulta para ciertos puntos finales. El hash de Ruby se codificará en parámetros de consulta de URL utilizando la gema `uri`. Referirse de nuevo a [API documentation](https://docs.onfleet.com/) para puntos finales que admiten parámetros de consulta.
+Opcionalmente, puede enviar un hash de parámetros de consulta para ciertos endpoints. El hash de Ruby se codificará en parámetros de consulta de URL utilizando la gema `uri`. Referirse de nuevo a [API documentation](https://docs.onfleet.com/) para endpoints que admiten parámetros de consulta.
 
 ```
 tasks = Onfleet::Tasks.new
 tasks.list(config, queryParameters={'from': '1455072025000', 'state': '1, 2, 3'})
 ```
 
-Para obtener un objeto de entidad dentro de un punto final, especifique un `entity id`:
+Para obtener un objeto de entidad dentro de un endpoint, especifique un `entity id`:
 
 ```
 # obtener ejemplos con la búsqueda de entityId
@@ -124,7 +124,7 @@ recipients = Onfleet::Recipients.new
 recipients.get(config, 'workerId')
 ```
 
-Junto con la búsqueda de un objeto de entidad con un `id` asociado, los siguientes parámetros de consulta también están disponibles en un grupo selecto de puntos finales:
+Junto con la búsqueda de un objeto de entidad con un `id` asociado, los siguientes parámetros de consulta también están disponibles en un grupo selecto de endpoints:
 
 * `queryParameters` (hash)
 * `name`
@@ -143,7 +143,7 @@ containers.get(config, 'teams', 'teamId')
 containers.get(config, 'organizations', 'organizationId')
 ```
 
-Para obtener un controlador por ubicación, use el método `get_by_location`:
+Para obtener un controlador por ubicación, utilice el método `get_by_location`:
 ```
 workers = Onfleet::Workers.new
 worker.get_by_location(config, 'longitude_value', 'latitude_value', 'radius_value')
@@ -151,7 +151,7 @@ worker.get_by_location(config, 'longitude_value', 'latitude_value', 'radius_valu
 El valor predeterminado del `radius` es 1000 metros si no se proporciona como argumento.
 
 ### **Peticiones POST**
-Para crear un objeto de entidad dentro de un punto final:
+Para crear un objeto de entidad dentro de un endpoint:
 ```
 .create(config, body={})
 ```
@@ -176,7 +176,7 @@ workers = Onfleet::Workers.new
 workers.create(config, body)
 ```
 
-Las solicitudes POST extendidas incluyen clon, batch_create, auto_assign en el punto final de las tareas; set_schedule en el punto final de los trabajadores; y auto_dispatch en el punto final de los equipos. A continuación, se muestran ejemplos de estos puntos finales:
+Las solicitudes POST extendidas incluyen clon, batch_create, auto_assign en el endpoint de las tareas; set_schedule en el endpoint de los trabajadores; y auto_dispatch en el endpoint de los equipos. A continuación, se muestran ejemplos de estos endpoints:
 
 ```
 tasks = Onfleet::Tasks.new
@@ -194,7 +194,7 @@ teams.auto_dispatch(config, 'id', body)
 Para más detalles, consulte nuestra documentación en [clone](https://docs.onfleet.com/reference#clone-task), [batch_create](https://docs.onfleet.com/reference#create-tasks-in-batch), [auto_assign](https://docs.onfleet.com/reference#automatically-assign-list-of-tasks), [set_schedule](https://docs.onfleet.com/reference#set-workers-schedule), y [auto_dispatch](https://docs.onfleet.com/reference#team-auto-dispatch).
 
 ### **Peticiones PUT**
-Para actualizar un objeto de entidad dentro de un punto final:
+Para actualizar un objeto de entidad dentro de un endpoint:
 ```
 .update(config, entityId, 'body')
 ```
@@ -218,7 +218,7 @@ workers.insert_task(config, 'taskId', body)
 ```
 
 ### **Peticiones DELETE**
-Para eliminar un objeto de entidad dentro de un punto final:
+Para eliminar un objeto de entidad dentro de un endpoint:
 ```
 .delete(config, id)
 ```
