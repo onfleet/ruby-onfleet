@@ -5,7 +5,7 @@ module Onfleet
     attr_reader :default_timeout, :api_key, :base_url, :headers, :version, :name
 
     def initialize(api_key, base_url = nil, headers = {})
-      file = File.read('/Users/danmenza/onfleet/code/api_wrappers/ruby-onfleet/package.json')
+      file = File.read(File.expand_path("../../package.json", __FILE__))
       package_data = JSON.parse(file)
 
       @default_url = 'https://onfleet.com/api/v2'
