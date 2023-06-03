@@ -1,5 +1,8 @@
 require 'faraday'
 require 'faraday-rate_limiter'
+require 'errors/http_error'
+require 'errors/permission_error'
+require 'errors/service_error'
 
 module Onfleet
   def self.request(config, method, path, body = nil)
