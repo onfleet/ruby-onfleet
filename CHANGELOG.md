@@ -17,3 +17,8 @@ Added
 * Added README support for spanish
 * Included throttling constraints for 20 API requests per second using faraday-rate_limiter
 * Updated headers on initialization to allow for custom headers
+
+## [1.0.3](https://github.com/onfleet/ruby-onfleet/releases/tag/v1.0.3) - 2023-06-05
+Added
+* Updated package.json to reference relative path
+* Updated utils.rb to require error classes
