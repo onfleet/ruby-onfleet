@@ -1,6 +1,6 @@
 {
     "name": "@onfleet/ruby-onfleet",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Onfleet's Ruby API wrapper package",
     "main": "onfleet.rb",
     "scripts": {
