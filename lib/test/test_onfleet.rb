@@ -1024,7 +1024,7 @@ describe Onfleet::Workers do
       .to_return(status: 200, body: response_data.to_json)
 
     worker = Onfleet::Workers.new
-    response = worker.get_delivery_manifest(config, request_data['w'], request_data)
+    response = worker.get_delivery_manifest(config, request_data, 'google_api_key', queryParameters={'startDate': '1455072025000', 'endDate': '1455072025000'})
 
     expect(response.status).to eq 200
     expect(response.body).to include('manifestDate')
