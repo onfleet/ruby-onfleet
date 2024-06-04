@@ -73,6 +73,22 @@ module Onfleet
       Onfleet.request(config, method.to_sym, path, body.to_json)
     end
 
+    def get_delivery_manifest(config, body, google_api_key, query_parameters_hash)
+      method = 'post'
+      query_parameters = nil
+      
+      if google_api_key
+        config.headers['X-Api-Key'] = "Google #{google_api_key}"
+      end
+      
+      if query_parameters_hash
+        query_parameters = URI.encode_www_form(query_parameters_hash)
+      end
+      path = "integrations/marketplace?#{query_parameters}"
+
+      Onfleet.request(config, method.to_sym, path, body.to_json)
+    end
+
     # ACTION: still needs to be tested
     def insert_task(config, worker_id, body)
       method = 'put'

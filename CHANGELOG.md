@@ -22,3 +22,7 @@ Added
 Added
 * Updated package.json to reference relative path
 * Updated utils.rb to require error classes
+
+## [1.0.4](https://github.com/onfleet/ruby-onfleet/releases/tag/v1.0.4) - 2024-05-29
+Added
+* Added support for Worker's Route Delivery Manifest

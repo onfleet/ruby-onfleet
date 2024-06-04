@@ -1004,4 +1004,30 @@ describe Onfleet::Workers do
     expect(response.status).to eq 200
     expect(response.body).to include('entries')
   end
+
+  it 'can get Delivery Manifest by calling POST /integrations/marketplace' do
+    # request data
+    config = RSpec.configuration.api_variables
+    request_data = RSpec.configuration.test_data['workers']['get_delivery_manifest']['request']
+    path = "integrations/marketplace"
+    method = 'post'
+    headers = {}
+    headers['Content-Type'] = 'application/json'
+    headers['User-Agent'] = '@onfleet/ruby-onfleet-1.0'
+    headers['X-Api-Key'] = 'Google <google_api_key>'
+
+    # response data
+    response_data = RSpec.configuration.test_data['workers']['get_delivery_manifest']['response']
+
+    stub_request(method.to_sym, "#{config.base_url}/#{path}")
+      .with(basic_auth: [config.api_key, config.api_key], body: request_data, headers: headers)
+      .to_return(status: 200, body: response_data.to_json)
+
+    worker = Onfleet::Workers.new
+    response = worker.get_delivery_manifest(config, request_data, 'google_api_key', queryParameters={'startDate': '1455072025000', 'endDate': '1455072025000'})
+
+    expect(response.status).to eq 200
+    expect(response.body).to include('manifestDate')
+    expect(response.body).to include('turnByTurn')
+  end
 end

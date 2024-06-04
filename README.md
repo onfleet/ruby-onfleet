@@ -87,7 +87,7 @@ Here are the operations available for each entity:
 |[tasks](https://docs.onfleet.com/reference/tasks)|get(id)<br />list(queryParameters={})<br />get_by_short_id(shortId)|create(body={})<br />batch_create(body={})<br />batch_create_async(body={})<br />complete(id, body={})<br />clone(id)<br />auto_assign(body={})<br />match_metadata(body={})|update(id, body={})|delete(id)|
 |[teams](https://docs.onfleet.com/reference/teams)|get(id)<br />list()<br />driver_time_estimate(workerId, queryParameters={})<br />get_unassigned_tasks(id)|create(body={})<br />auto_dispatch(id, body={})|update(id, body={})<br />insert_task(teamId, body={})|delete(id)|
 |[webhooks](https://docs.onfleet.com/reference/webhooks)|list()|create(body={})|X|delete(id)|
-|[workers](https://docs.onfleet.com/reference/workers)|get(id=nil, queryParameters={})<br />get_tasks(id)<br />get_by_location(longitude, latitude, radius)<br />get_schedule(id)|create(body={})<br />set_schedule(id, body={})<br />match_metadata(body={})|update(id, body={})<br />insert_task(id, body={})|delete(id)|
+|[workers](https://docs.onfleet.com/reference/workers)|get(id=nil, queryParameters={})<br />get_tasks(id)<br />get_by_location(longitude, latitude, radius)<br />get_schedule(id)|create(body={})<br />set_schedule(id, body={})<br />match_metadata(body={})<br />get_delivery_manifest(body={}, googleApiKey, queryParameters={})|update(id, body={})<br />insert_task(id, body={})|delete(id)|
 
 ### **GET Requests**
 To get all the entity objects within an endpoint use `list`:
@@ -174,6 +174,17 @@ workers = Onfleet::Workers.new
 workers.create(config, body)
 ```
 
+Examples of `get_delivery_manifest()`:
+```
+body = {
+  "path": "providers/manifest/generate?hubId=<workerId>&workerId=<workerId>",
+  "method": "GET"
+}
+
+workers = Onfleet::Workers.new
+workers.create(config, body, 'google_api_key', queryParameters={'startDate': '1455072025000', 'endDate': '1455072025000'})
+```
+
 Extended POST requests include clone, batch_create, auto_assign on the tasks endpoint; set_schedule on the workers endpoint; and auto_dispatch on the teams endpoint. Examples of these endpoints are below:
 
 ```
@@ -184,12 +195,13 @@ tasks.auto_assign(config, body)
 
 workers = Onfleet::Workers.new
 workers.set_schedule(config, 'id', body)
+workers.get_delivery_manfiest(config, body, 'google_api_key', queryParameters={})
 
 teams = Onfleet::Teams.new
 teams.auto_dispatch(config, 'id', body)
 ```
 
-For more details, check our documentation on [clone](https://docs.onfleet.com/reference#clone-task), [batch_create](https://docs.onfleet.com/reference#create-tasks-in-batch), [auto_assign](https://docs.onfleet.com/reference#automatically-assign-list-of-tasks), [set_schedule](https://docs.onfleet.com/reference#set-workers-schedule), and [auto_dispatch](https://docs.onfleet.com/reference#team-auto-dispatch).
+For more details, check our documentation on [clone](https://docs.onfleet.com/reference#clone-task), [batch_create](https://docs.onfleet.com/reference#create-tasks-in-batch), [auto_assign](https://docs.onfleet.com/reference#automatically-assign-list-of-tasks), [set_schedule](https://docs.onfleet.com/reference#set-workers-schedule), [get_delivery_manifest](https://docs.onfleet.com/reference/delivery-manifest) and [auto_dispatch](https://docs.onfleet.com/reference#team-auto-dispatch).
 
 ### **PUT Requests**
 To update an entity object within an endpoint:
