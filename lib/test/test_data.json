@@ -1997,9 +1997,9 @@
                 ]
             }
         },
-        "getManifestProvider": {
+        "get_delivery_manifest": {
             "request": {
-                "path": "providers/manifest/generate?hubId=<hubId>&workerId=<workerId>",
+                "path": "providers/manifest/generate?hubId=kyfYe*wyVbqfomP2HTn5dAe1&workerId=kBUZAb7pREtRn*8wIUCpjnPu",
                 "method": "GET"
             },
             "response": {

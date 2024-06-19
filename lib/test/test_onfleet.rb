@@ -15,6 +15,9 @@ require_relative '../resources/teams'
 require_relative '../resources/webhooks'
 require_relative '../resources/workers'
 
+# WebMock blocks HTTP requests in integration tests, but you can either stub the request or call WebMock.allow_net_connect! to configure the tests to run as normal.
+WebMock.allow_net_connect!
+
 # RSpec configuration setup for unit tests
 RSpec.configure do |config|
   file = File.read('./test_data.json')
@@ -22,7 +25,7 @@ RSpec.configure do |config|
   config.test_data = JSON.parse(file)
 
   config.add_setting :api_variables
-  config.api_variables = Onfleet::Configuration.new("f70dd381f0366c721677fb7e088b83bd","https://staging.onfleet.com/api/v2")
+  config.api_variables = Onfleet::Configuration.new("f70dd381f0366c721677fb7e088b83bd","https://stable1.onfleet.com/api/v2")
 end
 
 # Administrator entity tests
