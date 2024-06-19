@@ -73,7 +73,7 @@ module Onfleet
       Onfleet.request(config, method.to_sym, path, body.to_json)
     end
 
-    def get_delivery_manifest(config, body, google_api_key, query_parameters_hash)
+    def get_delivery_manifest(config, body, google_api_key = nil, query_parameters_hash = nil)
       method = 'post'
       query_parameters = nil
       
