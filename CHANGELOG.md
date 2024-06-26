@@ -26,3 +26,7 @@ Added
 ## [1.0.4](https://github.com/onfleet/ruby-onfleet/releases/tag/v1.0.4) - 2024-05-29
 Added
 * Added support for Worker's Route Delivery Manifest
+
+## [1.0.5](https://github.com/onfleet/ruby-onfleet/releases/tag/v1.0.5) - 2024-06-26
+Added
+* Update to RubyGems release
