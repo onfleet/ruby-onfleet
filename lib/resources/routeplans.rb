@@ -3,14 +3,10 @@ require 'uri'
 require_relative '../onfleet'
 
 module Onfleet
-  # Tasks represent units of work, defined by one destination and one recipient,
-  # that administrators create and assign to workers for completion.
-  # Task assignment, state and dependencies are important concepts that
-  # you should understand well prior to using the task endpoints.
   class Routeplans
     def create(config, body)
       method = 'post'
-      path = 'tasks'
+      path = 'routePlans'
 
       Onfleet.request(config, method.to_sym, path, body.to_json)
     end
@@ -34,19 +30,19 @@ module Onfleet
 
     def update(config, id, body)
       method = 'put'
-      path = "routeplans/#{id}"
+      path = "routePlans/#{id}"
 
       Onfleet.request(config, method.to_sym, path, body.to_json)
     end
 
-    def addTasksToRoutePlan(config, id, body) 
+    def add_tasks_to_routeplan(config, id, body) 
         method = 'put'
         path = "/routePlans/#{id}/tasks"
        
         Onfleet.request(config, method.to_sym, path, body.to_json)
     end
 
-    def delete(config, id)
+    def delete_one(config, id)
       method = 'delete'
       path = "routePlans/#{id}"
 
