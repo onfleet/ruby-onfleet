@@ -37,7 +37,7 @@ module Onfleet
 
     def add_tasks_to_routeplan(config, id, body) 
         method = 'put'
-        path = "/routePlans/#{id}/tasks"
+        path = "routePlans/#{id}/tasks"
        
         Onfleet.request(config, method.to_sym, path, body.to_json)
     end
