@@ -14,7 +14,7 @@ require_relative './resources/routeplans'
 require_relative './resources/tasks'
 require_relative './resources/teams'
 require_relative './resources/webhooks'
-require_relative './resources/workers'
+require_relative './resources/workers' 
 
 module Onfleet
 end
