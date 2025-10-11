@@ -51,7 +51,6 @@ module Onfleet
       Onfleet.request(config, method.to_sym, path)
     end
 
-    # ACTION: still needs to be tested - tested
     def get_by_location(config, longitude, latitude, radius = 1000)
       method = 'get'
       path = "workers/location?longitude=#{longitude}&latitude=#{latitude}&radius=#{radius}"
@@ -89,7 +88,6 @@ module Onfleet
       Onfleet.request(config, method.to_sym, path, body.to_json)
     end
 
-    # ACTION: still needs to be tested - tested
     def insert_task(config, worker_id, body)
       method = 'put'
       path = "containers/workers/#{worker_id}"
@@ -97,7 +95,6 @@ module Onfleet
       Onfleet.request(config, method.to_sym, path, body.to_json)
     end
 
-    # ACTION: still needs to be tested - tested
     def match_metadata(config, body)
       method = 'post'
       path = 'workers/metadata'
