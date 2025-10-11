@@ -15,7 +15,6 @@ module Onfleet
       Onfleet.request(config, method.to_sym, path, body.to_json)
     end
 
-    # ACTION: still needs to be tested
     def batch_create(config, body)
       method = 'post'
       path = 'tasks/batch'
@@ -23,7 +22,6 @@ module Onfleet
       Onfleet.request(config, method.to_sym, path, body.to_json)
     end
 
-    # ACTION: still needs to be tested
     def batch_create_async(config, body)
       method = 'post'
       path = 'tasks/batch-async'
@@ -62,7 +60,6 @@ module Onfleet
       Onfleet.request(config, method.to_sym, path, body.to_json)
     end
 
-    # ACTION: still needs to be tested
     def complete(config, id, body)
       method = 'post'
       path = "tasks/#{id}/complete"
@@ -84,7 +81,6 @@ module Onfleet
       Onfleet.request(config, method.to_sym, path)
     end
 
-    # ACTION: still needs to be tested
     def auto_assign(config, body)
       method = 'post'
       path = 'tasks/autoAssign'
@@ -92,7 +88,6 @@ module Onfleet
       Onfleet.request(config, method.to_sym, path, body.to_json)
     end
 
-    # ACTION: still needs to be tested
     def match_metadata(config, body)
       method = 'post'
       path = 'tasks/metadata'

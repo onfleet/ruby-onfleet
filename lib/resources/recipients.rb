@@ -39,7 +39,6 @@ module Onfleet
       Onfleet.request(config, method.to_sym, path)
     end
 
-    # ACTION: still needs to be tested
     def match_metadata(config, body)
       method = 'post'
       path = 'recipients/metadata'

@@ -17,7 +17,6 @@ module Onfleet
       Onfleet.request(config, method.to_sym, path)
     end
 
-    # ACTION: still needs to be tested
     def insert_task(config, org_id, body)
       method = 'put'
       path = "containers/organizations/#{org_id}"
