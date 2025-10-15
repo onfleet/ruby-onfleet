@@ -10,7 +10,7 @@ module Onfleet
   # Any failed requests will be retried in 30-minute cycles, up to one full day.
   # A failed request is any non-200 response that a webhook request gets from your application.
   class Webhooks
-    # ACTION: still needs to be tested
+    
     def create(config, body)
       method = 'post'
       path = 'webhooks'
@@ -18,7 +18,6 @@ module Onfleet
       Onfleet.request(config, method.to_sym, path, body.to_json)
     end
 
-    # ACTION: still needs to be tested
     def list(config)
       method = 'get'
       path = 'webhooks'
@@ -26,7 +25,6 @@ module Onfleet
       Onfleet.request(config, method.to_sym, path)
     end
 
-    # ACTION: still needs to be tested
     def delete(config, id)
       method = 'delete'
       path = "webhooks/#{id}"
