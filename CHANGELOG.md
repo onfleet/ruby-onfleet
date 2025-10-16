@@ -41,5 +41,5 @@ Added
 Added
 * Initial release on RubyGems
 
-[Unreleased]: https://github.com/onfleet/php-onfleet/compare/v1.1.0...HEAD
-[1.0.0]: https://github.com/onfleet/php-onfleet/releases/tag/v1.1.0
+[Unreleased]: https://github.com/onfleet/ruby-onfleet/compare/v1.1.0...HEAD
+[1.0.0]: https://github.com/onfleet/ruby-onfleet/releases/tag/v1.1.0
