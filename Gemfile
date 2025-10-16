@@ -1,11 +1,10 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'faraday'
-gem 'faraday-net_http'
-gem 'faraday-rate_limiter'
-gem 'json'
-gem 'rspec'
-gem 'uri'
-gem 'webmock'
-
-gemspec
+gem "ruby-onfleet", path: "."
+gem "uri", "~> 1.0"
+gem "faraday"
+gem "faraday-net_http"
+gem "faraday-rate_limiter"
+gem "json"
+gem "rspec"
+gem "webmock"
