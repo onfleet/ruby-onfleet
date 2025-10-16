@@ -86,6 +86,7 @@ Estas son las operaciones disponibles para cada endpoint:
 |[hubs](https://docs.onfleet.com/reference/hubs)|list()|create(body={})|update(id, body={})|x|
 |[organizations](https://docs.onfleet.com/reference/organizations)|get(delegateeId=nil)|x|insert_task(orgId, body={})|x|
 |[recipients](https://docs.onfleet.com/reference/recipients)|get(id)<br />get_by_name(name)<br />get_by_phone(phone)|create(body={})<br />match_metadata(body={})|update(id, body={})|x|
+|[routeplans](https://docs.onfleet.com/reference/routeplan#/) | get(id)<br />get(body={}) | create(body={}) | update(id, body={})<br />add_tasks_to_routeplan(id, body={}) | delete_one(id) |
 |[tasks](https://docs.onfleet.com/reference/tasks)|get(id)<br />list(queryParameters={})<br />get_by_short_id(shortId)|create(body={})<br />batch_create(body={})<br />batch_create_async(body={})<br />complete(id, body={})<br />clone(id)<br />auto_assign(body={})<br />match_metadata(body={})|update(id, body={})|delete(id)|
 |[teams](https://docs.onfleet.com/reference/teams)|get(id)<br />list()<br />driver_time_estimate(workerId, queryParameters={})<br />get_unassigned_tasks(id)|create(body={})<br />auto_dispatch(id, body={})|update(id, body={})<br />insert_task(teamId, body={})|delete(id)|
 |[webhooks](https://docs.onfleet.com/reference/webhooks)|list()|create(body={})|X|delete(id)|
