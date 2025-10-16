@@ -1,6 +1,5 @@
 source "https://rubygems.org"
 
-gem "ruby-onfleet", path: "."
 gem "uri", "~> 1.0"
 gem "faraday"
 gem "faraday-net_http"

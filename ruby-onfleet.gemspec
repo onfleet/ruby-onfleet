@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.add_dependency('faraday-net_http', '~> 3.1.0')
   s.add_dependency('faraday-rate_limiter', '~> 0.0.4')
   s.add_dependency('json', '~> 2.6.3')
-  #s.add_dependency('uri', '~> 0.12.4')
+  s.add_dependency('uri', '~> 1.0')
 
   s.add_development_dependency('rspec', '~> 3.12.0')
   s.add_development_dependency('webmock', '~> 3.18.1')
