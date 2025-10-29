@@ -29,6 +29,13 @@ module Onfleet
       Onfleet.request(config, method.to_sym, path, body.to_json)
     end
 
+    def get_batch_create_async_status(config, id)
+      method = 'get'
+      path = "tasks/batch/#{id}"
+
+      Onfleet.request(config, method.to_sym, path)
+    end
+
     def list(config, query_parameters_hash)
       method = 'get'
       # NOTE: parameters included here must be a hash object that is translated to URL query parameters
