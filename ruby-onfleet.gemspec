@@ -1,10 +1,10 @@
 Gem::Specification.new do |s|
   s.name        = 'ruby-onfleet'
-  s.version     = '1.1.0'
-  s.date        = '2025-10-16'
+  s.version     = '1.2.0'
+  s.date        = '2025-10-29'
   s.summary     = 'Onfleet Ruby API wrapper package'
   s.description = 'The Onfleet Ruby library provides convenient access to the Onfleet API.'
-  s.authors     = ['Dan Menza']
+  s.authors     = ['Dan Menza', 'Shuai Tseng']
   s.email       = 'support@onfleet.com'
   s.homepage    = 'https://rubygems.org/gems/ruby-onfleet'
   s.license     = 'MIT'

@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [1.2.0](https://github.com/onfleet/ruby-onfleet/releases/tag/v1.2.0) - 2024-10-29
+Added
+* Added `get_batch_create_async_status` endpoint to support `get_batch_create_async`
+
 ## [1.1.0](https://github.com/onfleet/ruby-onfleet/releases/tag/v1.1.0) - 2025-10-16
 Added
 * New CRUD operations for Route Plans
@@ -41,5 +45,6 @@ Added
 Added
 * Initial release on RubyGems
 
-[Unreleased]: https://github.com/onfleet/ruby-onfleet/compare/v1.1.0...HEAD
-[1.0.0]: https://github.com/onfleet/ruby-onfleet/releases/tag/v1.1.0
+[Unreleased]: https://github.com/onfleet/ruby-onfleet/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/onfleet/ruby-onfleet/releases/tag/v1.2.0
+[1.1.0]: https://github.com/onfleet/ruby-onfleet/releases/tag/v1.1.0
