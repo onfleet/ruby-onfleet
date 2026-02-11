@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
   s.metadata    = { 'source_code_uri' => 'https://github.com/onfleet/ruby-onfleet' }
 
-  s.add_dependency('faraday', '~> 2.9.0')
+  s.add_dependency('faraday', '~> 2.14.x')
   s.add_dependency('faraday-net_http', '~> 3.1.0')
   s.add_dependency('faraday-rate_limiter', '~> 0.0.4')
   s.add_dependency('json', '~> 2.6.3')
