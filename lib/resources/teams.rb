@@ -82,5 +82,12 @@ module Onfleet
 
       Onfleet.request(config, method.to_sym, path, body.to_json)
     end
+
+    def match_metadata(config, body)
+      method = 'post'
+      path = 'teams/metadata'
+
+      Onfleet.request(config, method.to_sym, path, body.to_json)
+    end
   end
 end
